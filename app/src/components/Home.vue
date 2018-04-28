@@ -1,29 +1,59 @@
 <script>
+import api from '@/resources/base';
+
 export default {
+  components: { api },
+
   data() {
     return {
       list: [
         {
-          image: 'https://media.journoportfolio.com/system/images/8ac94200-3cac-4953-a28f-3ef3eaa07eba.jpeg',
-          title: 'Why Young Adult Books Are So Important',
-          intro: "Article in Kettle Magazine Spring 2018 about young adult books and why they're so important for today's teens and adults alike.",
-          cat: 'Books',
-          company: 'Kettle Magazine',
-          date: '27th April 2018',
+          title: '',
+          date: {},
+          slug: '',
+          image: '',
+          url: '',
+          intro: '',
+          link: '',
+          clients: [
+            {
+              title: '',
+              slug: '',
+            },
+          ],
+          topics: [
+            {
+              title: '',
+              slug: '',
+            },
+          ],
         },
       ],
     };
+  },
+
+  methods: {
+    fetch() {
+      api.get('/work').then(work => {
+        this.list = work.data.data;
+      });
+    },
+  },
+
+  created() {
+    this.fetch();
   },
 };
 </script>
 
 <template>
   <div class="container-fluid">
+    <!-- <pre>{{ list }}</pre> -->
     <div class="row">
       <div class="col-sm-4" v-for="entry in list" :key="entry.title">
         <img :src="entry.image" :alt="entry.title" />
 
-        <span class="card-date">{{ entry.company }} {{ entry.date }}</span>
+        <span class="card-date">{{ entry.company }} {{ entry.date.date }}</span>
         <span class="card-title">{{ entry.title }}</span>
         <span class="card-intro">{{ entry.intro }}</span>
       </div>
