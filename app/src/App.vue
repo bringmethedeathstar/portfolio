@@ -25,6 +25,9 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 300;
+}
+
+section {
   padding: 60px;
 }
 </style>
