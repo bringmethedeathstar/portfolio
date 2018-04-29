@@ -1,8 +1,9 @@
 <script>
 import api from '@/resources/base';
+import Card from '@/components/parts/Card';
 
 export default {
-  components: { api },
+  components: { Card },
 
   data() {
     return {
@@ -11,7 +12,7 @@ export default {
           title: '',
           date: {},
           slug: '',
-          image: '',
+          image: {},
           url: '',
           intro: '',
           link: '',
@@ -51,28 +52,11 @@ export default {
     <!-- <pre>{{ list }}</pre> -->
     <div class="row">
       <div class="col-sm-4" v-for="entry in list" :key="entry.title">
-        <img :src="entry.image" :alt="entry.title" />
-
-        <span class="card-date">{{ entry.company }} {{ entry.date.date }}</span>
-        <span class="card-title">{{ entry.title }}</span>
-        <span class="card-intro">{{ entry.intro }}</span>
+        <Card :card="entry" />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.card-date {
-  font-size: 10px;
-}
-
-.card-title {
-  font-weight: 400;
-  display: block;
-  margin-bottom: 4px;
-}
-
-img {
-  width: 100%;
-}
 </style>
