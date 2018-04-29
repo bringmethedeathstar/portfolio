@@ -12,17 +12,12 @@ return [
         'criteria' => ['id' => 26],
         'one' => true,
         'transformer' => function(Entry $entry) {
-          $hero = $entry->main->one();
           $image = $entry->profile->one();
 
           return [
             'title' => $entry->title,
             'slug' => $entry->slug,
             'text' => $entry->simple,
-            'hero' => [
-              'title' => $hero->title ?? '',
-              'url' => $hero->url ?? '',
-            ],
             'profile' => [
               'title' => $image->title ?? '',
               'url' => $image->url ?? '',
@@ -50,7 +45,7 @@ return [
             'link' => $entry->external,
             'image' => [
               'title' => $image->title ?? '',
-              'url' => $image->url ?? '',
+              'url' => $image->getUrl('work') ?? '',
             ],
             'clients' => array_map(function($client) {
               return [

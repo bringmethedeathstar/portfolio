@@ -32,25 +32,35 @@ export default {
 </script>
 
 <template>
-  <section class="intro" :style="`background-image: url('${intro.hero.url}')`">
-    <div class="container text-center">
-      <img class="profile" :src="intro.profile.url" :alt="intro.profile.title">
+  <section class="intro">
+    <div class="container">
+      <!-- <img class="profile" :src="intro.profile.url" :alt="intro.profile.title"> -->
 
-      <h1>{{ intro.title }}</h1>
+      <div class="row">
+        <div class="col-sm-8">
+          <h1 class="under">{{ intro.title }}</h1>
 
-      <div v-html="intro.text"></div>
+          <div v-html="intro.text"></div>
+        </div>
+      </div>
     </div>
-
-    <pre>{{ intro }}</pre>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .intro {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  position: relative;
-  padding: 0;
+  margin-bottom: 60px;
+  font-size: 18px;
+}
+
+.profile {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 46px;
 }
 </style>
