@@ -1,60 +1,17 @@
 <script>
-import api from '@/resources/base';
-import Card from '@/components/parts/Card';
+import Intro from '@/components/parts/Intro';
+import Cards from '@/components/cards/Cards';
 
 export default {
-  components: { Card },
-
-  data() {
-    return {
-      list: [
-        {
-          title: '',
-          date: {},
-          slug: '',
-          image: {},
-          url: '',
-          intro: '',
-          link: '',
-          clients: [
-            {
-              title: '',
-              slug: '',
-            },
-          ],
-          topics: [
-            {
-              title: '',
-              slug: '',
-            },
-          ],
-        },
-      ],
-    };
-  },
-
-  methods: {
-    fetch() {
-      api.get('/work').then(work => {
-        this.list = work.data.data;
-      });
-    },
-  },
-
-  created() {
-    this.fetch();
-  },
+  components: { Intro, Cards },
 };
 </script>
 
 <template>
-  <div class="container-fluid">
-    <!-- <pre>{{ list }}</pre> -->
-    <div class="row">
-      <div class="col-sm-4" v-for="entry in list" :key="entry.title">
-        <Card :card="entry" />
-      </div>
-    </div>
+  <div>
+    <Intro />
+
+    <Cards />
   </div>
 </template>
 
