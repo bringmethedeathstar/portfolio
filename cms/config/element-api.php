@@ -7,15 +7,21 @@ return [
     'work' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
+      
       return [
         'elementType' => Entry::class,
         'criteria' => ['section' => 'work'],
         'transformer' => function(Entry $entry) {
+          $image = $entry->main->one();
+
           return [
             'title' => $entry->title,
             'slug' => $entry->slug,
             'date' => $entry->postDate,
-            'image' => '',
+            'image' => [
+              'title' => $image->title ?? '',
+              'url' => $image->url ?? '',
+            ],
             'url' => $entry->url,
             'intro' => $entry->intro,
             'link' => $entry->external,

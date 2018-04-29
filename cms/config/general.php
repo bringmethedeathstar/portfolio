@@ -9,42 +9,47 @@
  */
 
 return [
-    // Global settings
-    '*' => [
-        // Default Week Start Day (0 = Sunday, 1 = Monday...)
-        'defaultWeekStartDay' => 0,
+  // Global settings
+  '*' => [
+    // Default Week Start Day (0 = Sunday, 1 = Monday...)
+    'defaultWeekStartDay' => 0,
 
-        // Enable CSRF Protection (recommended)
-        'enableCsrfProtection' => true,
+    // Enable CSRF Protection (recommended)
+    'enableCsrfProtection' => true,
 
-        // Whether generated URLs should omit "index.php"
-        'omitScriptNameInUrls' => true,
+    // Whether generated URLs should omit "index.php"
+    'omitScriptNameInUrls' => true,
 
-        // Control Panel trigger word
-        'cpTrigger' => 'admin',
+    // Control Panel trigger word
+    'cpTrigger' => 'admin',
 
-        // The secure key Craft will use for hashing and encrypting data
-        'securityKey' => getenv('SECURITY_KEY'),
+    // The secure key Craft will use for hashing and encrypting data
+    'securityKey' => getenv('SECURITY_KEY'),
+
+    // Get AssetURL from .env
+    'aliases' => [
+      '@assetUrl' => '/web/uploads',
     ],
+  ],
 
-    // Dev environment settings
-    'dev' => [
-        // Base site URL
-        'siteUrl' => null,
+  // Dev environment settings
+  'dev' => [
+    // Base site URL
+    'siteUrl' => null,
 
-        // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => true,
-    ],
+    // Dev Mode (see https://craftcms.com/support/dev-mode)
+    'devMode' => true,
+  ],
 
-    // Staging environment settings
-    'staging' => [
-        // Base site URL
-        'siteUrl' => null,
-    ],
+  // Staging environment settings
+  'staging' => [
+    // Base site URL
+    'siteUrl' => null,
+  ],
 
-    // Production environment settings
-    'production' => [
-        // Base site URL
-        'siteUrl' => null,
-    ],
+  // Production environment settings
+  'production' => [
+    // Base site URL
+    'siteUrl' => null,
+  ],
 ];
