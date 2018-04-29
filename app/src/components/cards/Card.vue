@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="crd">
     <img :src="card.image.url" :alt="card.image.title" />
 
     <span class="card-date">{{ card.company }} {{ card.date.date }}</span>
@@ -15,6 +15,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.crd {
+  margin-bottom: 30px;
+}
+
 .card-date {
   font-size: 10px;
 }
