@@ -6,6 +6,8 @@ import router from './router';
 
 Vue.config.productionTip = false;
 
+Vue.use(require('vue-moment'));
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
