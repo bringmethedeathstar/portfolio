@@ -22,11 +22,11 @@ export default {
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 #app {
-  font-family: 'Open Sans', sans-serif;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.25;
+  color: #222;
 }
 
 section {

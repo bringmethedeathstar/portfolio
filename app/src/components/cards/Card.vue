@@ -6,9 +6,13 @@ export default {
 
 <template>
   <div class="crd">
-    <img :src="card.image.url" :alt="card.image.title" />
+    <img class="card-image" :src="card.image.url" :alt="card.image.title" />
 
-    <span class="card-date">{{ card.company }} {{ card.date.date }}</span>
+    <span class="card-date">
+      <span v-for="client in card.clients">{{ client.title }} | </span>
+      {{ card.date.date | moment('Do MMM YYYY') }}
+    </span>
+
     <span class="card-title">{{ card.title }}</span>
     <span class="card-intro">{{ card.intro }}</span>
   </div>
@@ -19,14 +23,22 @@ export default {
   margin-bottom: 30px;
 }
 
+.card-image {
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
 .card-date {
+  display: block;
   font-size: 10px;
+  margin-bottom: 5px;
+  color: #888;
 }
 
 .card-title {
-  font-weight: 400;
+  font-weight: 500;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 
 img {

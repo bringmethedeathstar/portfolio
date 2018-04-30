@@ -48,14 +48,19 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4" v-for="entry in list" :key="entry.title">
-        <Card :card="entry" />
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4" v-for="entry in list" :key="entry.title">
+          <Card :card="entry" />
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
+section {
+  background-color: #f5f5f5;
+}
 </style>
