@@ -38,7 +38,7 @@ export default {
 
       <div class="row">
         <div class="col-sm-8">
-          <h1 class="under">{{ intro.title }}</h1>
+          <h1 class="alive">{{ intro.title }}</h1>
 
           <div v-html="intro.text"></div>
         </div>
@@ -57,10 +57,5 @@ export default {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-}
-
-h1 {
-  font-weight: 300;
-  font-size: 46px;
 }
 </style>

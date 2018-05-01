@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .crd {
-  margin-bottom: 30px;
+  margin-bottom: 45px;
 }
 
 .card-image {

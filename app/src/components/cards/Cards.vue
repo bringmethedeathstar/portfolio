@@ -50,6 +50,8 @@ export default {
 <template>
   <section>
     <div class="container">
+      <h1 class="alive">My Work.</h1>
+
       <div class="row">
         <div class="col-sm-6 col-md-4" v-for="entry in list" :key="entry.title">
           <Card :card="entry" />
@@ -62,5 +64,9 @@ export default {
 <style scoped>
 section {
   background-color: #f5f5f5;
+}
+
+h1 {
+  margin-bottom: 45px;
 }
 </style>
