@@ -63,20 +63,41 @@ return [
         },
       ];
     },
-    // 'news/<entryId:\d+>.json' => function($entryId) {
-    //     return [
-    //         'elementType' => Entry::class,
-    //         'criteria' => ['id' => $entryId],
-    //         'one' => true,
-    //         'transformer' => function(Entry $entry) {
-    //             return [
-    //                 'title' => $entry->title,
-    //                 'url' => $entry->url,
-    //                 'summary' => $entry->summary,
-    //                 'body' => $entry->body,
-    //             ];
-    //         },
-    //     ];
-    // },
+    'work/<slug:{slug}>.json' => function($slug) {
+      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+
+      return [
+        'elementType' => Entry::class,
+        'criteria' => ['slug' => $slug],
+        'transformer' => function(Entry $entry) {
+          $image = $entry->main->one();
+
+          return [
+            'title' => $entry->title,
+            'slug' => $entry->slug,
+            'date' => $entry->postDate,
+            'url' => $entry->url,
+            'intro' => $entry->intro,
+            'link' => $entry->external,
+            'image' => [
+              'title' => $image->title ?? '',
+              'url' => $image->getUrl('work') ?? '',
+            ],
+            'clients' => array_map(function($client) {
+              return [
+                'title' => $client->title,
+                'slug' => $client->slug,
+              ];
+            }, $entry->clients->all()),
+            'topics' => array_map(function($topic) {
+              return [
+                'title' => $topic->title,
+                'slug' => $topic->slug,
+              ];
+            }, $entry->topics->all()),
+          ];
+        },
+      ];
+    },
   ]
 ];
