@@ -1,10 +1,7 @@
 <script>
 import api from '@/resources/base';
-import Card from '@/components/cards/Card';
 
 export default {
-  components: { Card },
-
   data() {
     return {
       intro: {

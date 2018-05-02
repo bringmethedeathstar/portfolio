@@ -1,19 +1,30 @@
 <script>
 export default {
   props: ['card'],
+
+  computed: {
+    url() {
+      return `/work/${this.card.slug}`;
+    },
+  },
 };
 </script>
 
 <template>
   <div class="crd">
-    <img class="card-image" :src="card.image.url" :alt="card.image.title" />
+    <router-link :to="url">
+      <img class="card-image" :src="card.image.url" :alt="card.image.title" />
+    </router-link>
 
     <span class="card-date">
       <span v-for="client in card.clients">{{ client.title }} | </span>
       {{ card.date.date | moment('Do MMM YYYY') }}
     </span>
 
-    <span class="card-title">{{ card.title }}</span>
+    <router-link :to="url">
+      <span class="card-title">{{ card.title }}</span>
+    </router-link>
+
     <span class="card-intro">{{ card.intro }}</span>
   </div>
 </template>

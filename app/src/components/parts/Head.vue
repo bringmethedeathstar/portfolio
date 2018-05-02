@@ -4,7 +4,7 @@ export default {
 </script>
 
 <template>
-  <div class="head">aa</div>
+  <div class="head">a</div>
 </template>
 
 <style lang="scss" scoped>

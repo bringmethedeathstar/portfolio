@@ -1,6 +1,6 @@
 <script>
 import api from '@/resources/base';
-import Card from '@/components/cards/Card';
+import Card from '@/components/parts/Card';
 
 export default {
   components: { Card },
@@ -50,7 +50,7 @@ export default {
 <template>
   <section>
     <div class="container">
-      <h1 class="alive">My Work.</h1>
+      <h1 class="alive">My Work</h1>
 
       <div class="row">
         <div class="col-sm-6 col-md-4" v-for="entry in list" :key="entry.title">

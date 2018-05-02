@@ -1,9 +1,9 @@
 <script>
 import Intro from '@/components/parts/Intro';
-import Cards from '@/components/cards/Cards';
+import Work from '@/components/work/List';
 
 export default {
-  components: { Intro, Cards },
+  components: { Intro, Work },
 };
 </script>
 
@@ -11,7 +11,7 @@ export default {
   <div>
     <Intro />
 
-    <Cards />
+    <Work />
   </div>
 </template>
 

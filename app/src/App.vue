@@ -31,6 +31,15 @@ $purple: #982898;
   color: #222;
 }
 
+a {
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
 h1 {
   @extend .under;
 
@@ -45,20 +54,23 @@ section {
 .under {
   display: inline-block;
   position: relative;
-  padding-bottom: 5px;
-  margin-bottom: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 45px;
 
   &:after, &:before {
     content: '';
     position: absolute;
     background: $purple;
-    left: 2px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     transition: width .3s ease-in-out;
   }
 
   &:after {
-    width: 60px;
-    height: 3px;
+    width: 80px;
+    height: 2px;
     bottom: 0;
   }
   &:before {
