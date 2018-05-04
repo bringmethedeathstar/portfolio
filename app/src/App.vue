@@ -74,16 +74,12 @@ section {
     bottom: 0;
   }
   &:before {
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
   }
 
   &:hover:after {
     width: calc(100% - 5px);
-  }
-
-  &.alive:before {
-    width: 0;
   }
 }
 </style>
