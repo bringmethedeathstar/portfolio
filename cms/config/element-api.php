@@ -80,7 +80,7 @@ return [
             'link' => $entry->external,
             'image' => [
               'title' => $image->title ?? '',
-              'url' => $image->getUrl('hero') ?? '',
+              'url' => $image ? $image->getUrl('hero') : '',
             ],
             'clients' => array_map(function($client) {
               return [
@@ -88,12 +88,26 @@ return [
                 'slug' => $client->slug,
               ];
             }, $entry->clients->all()),
+
             'topics' => array_map(function($topic) {
               return [
                 'title' => $topic->title,
                 'slug' => $topic->slug,
               ];
             }, $entry->topics->all()),
+
+            'article' => array_map(function($article) {
+              $image = $article->image->one();
+
+              return [
+                'type' => $article->type->handle,
+                'text' => $article->text,
+                'image' => [
+                  'title' => $image->title ?? '',
+                  'url' => $image ? $image->getUrl('hero') : '',
+                ],
+              ];
+            }, $entry->basic->all()),
           ];
         },
       ];
