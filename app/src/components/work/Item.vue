@@ -49,8 +49,8 @@ export default {
   <div>
     <section class="hero" :style="`background-image: url('${item.image.url}')`">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-4 offset-sm-2">
             <h2>{{ item.title }}</h2>
 
             <div v-html="item.intro"></div>
@@ -75,14 +75,15 @@ export default {
 
 <style lang="scss" scoped>
 .hero {
-  height: 525px;
+  min-height: 400px;
   position: relative;
   color: white;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   font-weight: normal;
-  padding-top: 20vh;
+  padding-top: 100px;
+  padding-bottom: 180px;
 
   &:before {
     content: '';
@@ -91,7 +92,7 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(#444, .6)
+    background: rgba(#444, .8)
   }
 }
 
@@ -106,6 +107,6 @@ section {
 .project {
   padding: 30px;
   background-color: #f5f5f5;
-  margin-top: -200px;
+  margin-top: -150px;
 }
 </style>
