@@ -27,6 +27,13 @@ export default {
             slug: '',
           },
         ],
+        article: [
+          {
+            type: '',
+            text: '',
+            image: {},
+          },
+        ],
       },
     };
   },
@@ -64,7 +71,19 @@ export default {
         <div class="row justify-content-center">
           <div class="col-sm-10">
             <div class="project">
-              <pre>{{ item }}</pre>
+              <div v-for="block in item.article" class="block" :class="block.type">
+                <div v-if="block.type === 'intro'">
+                  <img :src="block.image.url" :alt="block.image.title" />
+
+                  <div v-html="block.text"></div>
+                </div>
+
+                <div v-else>
+                  <div v-html="block.text"></div>
+
+                  <img :src="block.image.url" :alt="block.image.title" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -105,8 +124,16 @@ section {
 }
 
 .project {
-  padding: 30px;
   background-color: #f5f5f5;
-  margin-top: -150px;
+  margin-top: -175px;
+}
+
+.block {
+  margin-bottom: 30px;
+  padding: 30px;
+
+  &.intro {
+    padding: 0;
+  }
 }
 </style>
