@@ -51,6 +51,10 @@ section {
   padding: 60px;
 }
 
+img {
+  width: 100%;
+}
+
 .under {
   display: inline-block;
   position: relative;
