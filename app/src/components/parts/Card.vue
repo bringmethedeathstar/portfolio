@@ -17,7 +17,7 @@ export default {
     </router-link>
 
     <span class="card-date">
-      <span v-for="client in card.clients">{{ client.title }} | </span>
+      <router-link :to="card.client.slug">{{ card.client.title }}</router-link>
       {{ card.date.date | moment('Do MMM YYYY') }}
     </span>
 

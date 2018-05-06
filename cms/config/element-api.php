@@ -35,6 +35,7 @@ return [
         'criteria' => ['section' => 'work'],
         'transformer' => function(Entry $entry) {
           $image = $entry->main->one();
+          $client = $entry->client->one();
 
           return [
             'title' => $entry->title,
@@ -42,16 +43,17 @@ return [
             'date' => $entry->postDate,
             'intro' => $entry->intro,
             'link' => $entry->external,
+
             'image' => [
               'title' => $image->title ?? '',
               'url' => $image->getUrl('work') ?? '',
             ],
-            'clients' => array_map(function($client) {
-              return [
-                'title' => $client->title,
-                'slug' => $client->slug,
-              ];
-            }, $entry->clients->all()),
+
+            'client' => [
+              'title' => $client->title,
+              'slug' => $client->slug,
+            ],
+
             'topics' => array_map(function($topic) {
               return [
                 'title' => $topic->title,
@@ -71,6 +73,7 @@ return [
         'one' => true,
         'transformer' => function(Entry $entry) {
           $image = $entry->main->one();
+          $client = $entry->client->one();
 
           return [
             'title' => $entry->title,
@@ -78,16 +81,16 @@ return [
             'date' => $entry->postDate,
             'intro' => $entry->intro,
             'link' => $entry->external,
+
             'image' => [
               'title' => $image->title ?? '',
               'url' => $image ? $image->getUrl('hero') : '',
             ],
-            'clients' => array_map(function($client) {
-              return [
-                'title' => $client->title,
-                'slug' => $client->slug,
-              ];
-            }, $entry->clients->all()),
+            
+            'client' => [
+              'title' => $client->title,
+              'slug' => $client->slug,
+            ],
 
             'topics' => array_map(function($topic) {
               return [
@@ -104,7 +107,7 @@ return [
                 'text' => $article->text,
                 'image' => [
                   'title' => $image->title ?? '',
-                  'url' => $image ? $image->getUrl('hero') : '',
+                  'url' => $image ? $image->getUrl('basicProject') : '',
                 ],
               ];
             }, $entry->basic->all()),
