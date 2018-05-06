@@ -27,7 +27,7 @@ $purple: #982898;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.25;
+  line-height: 1.5;
   color: #222;
 }
 
@@ -38,6 +38,10 @@ a {
     color: inherit;
     text-decoration: none;
   }
+}
+
+p {
+  margin-bottom: 25px;
 }
 
 h1 {
