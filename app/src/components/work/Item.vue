@@ -62,6 +62,11 @@ export default {
 
             <div v-html="item.intro"></div>
           </div>
+
+          <div class="col-sm-4 text-right">
+            <div>{{ item.date.date | moment('Do MMM YYYY') }}</div>
+            <router-link :to="item.client.slug">{{ item.client.title }}</router-link>
+          </div>
         </div>
       </div>
     </section>
@@ -75,7 +80,7 @@ export default {
                 <div v-if="block.type === 'intro'">
                   <img :src="block.image.url" :alt="block.image.title" />
 
-                  <div v-html="block.text"></div>
+                  <div v-html="block.text" class="project-text"></div>
                 </div>
 
                 <div v-else>
@@ -102,7 +107,7 @@ export default {
   background-size: cover;
   font-weight: normal;
   padding-top: 100px;
-  padding-bottom: 180px;
+  padding-bottom: 145px;
 
   &:before {
     content: '';
@@ -121,19 +126,40 @@ h2 {
 
 section {
   background-color: #f5f5f5;
+  padding: 0;
 }
 
 .project {
   background-color: #f5f5f5;
-  margin-top: -175px;
+  margin-top: -115px;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 115px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    box-shadow: 0px -2px 41px -5px rgba(0,0,0,0.75);
+  }
 }
 
 .block {
   margin-bottom: 30px;
-  padding: 30px;
+  padding: 0 45px;
+  margin-bottom: 45px;
+  position: relative;
+  z-index: 1;
 
   &.intro {
     padding: 0;
   }
+}
+
+.project-text {
+  padding: 30px 45px;
+  padding-bottom: 0;
 }
 </style>
