@@ -86,7 +86,7 @@ export default {
                 <div v-else>
                   <div v-html="block.text"></div>
 
-                  <img :src="block.image.url" :alt="block.image.title" />
+                  <img v-if="block.image.url" :src="block.image.url" :alt="block.image.title" />
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(#444, .8)
+    background: rgba(#444, 0.8);
   }
 }
 
@@ -142,7 +142,7 @@ section {
     top: 0;
     left: 0;
     z-index: 0;
-    box-shadow: 0px -2px 41px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px -2px 41px -5px rgba(0, 0, 0, 0.75);
   }
 }
 
