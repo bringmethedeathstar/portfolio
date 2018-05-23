@@ -54,7 +54,7 @@ export default {
 
 <template>
   <div>
-    <section class="hero" :style="`background-image: url('${item.image.url}')`">
+    <!-- <section class="hero" :style="`background-image: url('${item.image.url}')`">
       <div class="container">
         <div class="row">
           <div class="col-sm-4 offset-sm-2">
@@ -67,6 +67,27 @@ export default {
             <div>{{ item.date.date | moment('Do MMM YYYY') }}</div>
             <router-link :to="item.client.slug">{{ item.client.title }}</router-link>
           </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-6 text-center">
+            <h2>{{ item.title }}</h2>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-4">
+              <p class="text-center">{{ item.date.date | moment('Do MMM YYYY') }}</p>
+              <div v-html="item.intro"></div>
+          </div>
+
+          <!-- <div class="col-sm-4 text-right">
+            <router-link :to="item.client.slug">{{ item.client.title }}</router-link>
+          </div> -->
         </div>
       </div>
     </section>
@@ -122,16 +143,17 @@ export default {
 
 h2 {
   font-weight: normal;
+  margin-bottom: 60px;
 }
 
 section {
   background-color: #f5f5f5;
-  padding: 0;
+  // padding: 0;
 }
 
 .project {
   background-color: #f5f5f5;
-  margin-top: -115px;
+  // margin-top: -115px;
   position: relative;
 
   &:before {
