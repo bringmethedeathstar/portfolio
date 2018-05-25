@@ -90,6 +90,7 @@ return [
             'client' => [
               'title' => $client->title,
               'slug' => $client->slug,
+              'icon' => $client->icon->one()->getUrl('clientIcon') ?? '',
             ],
 
             'topics' => array_map(function($topic) {
