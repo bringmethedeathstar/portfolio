@@ -75,19 +75,21 @@ export default {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-sm-6 text-center">
-            <h2>{{ item.title }}</h2>
+            <router-link :to="item.client.slug" class="client">
+              <img :src="item.client.icon" :alt="`${item.client.title} Brand`">
+              {{ item.client.title }}
+            </router-link>
+
+            <h1>{{ item.title }}</h1>
           </div>
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-4">
-              <p class="text-center">{{ item.date.date | moment('Do MMM YYYY') }}</p>
-              <div v-html="item.intro"></div>
-          </div>
+          <div class="col-sm-6 text-center">
+            <p class="date text-center under">{{ item.date.date | moment('Do MMMM YYYY') }}</p>
 
-          <!-- <div class="col-sm-4 text-right">
-            <router-link :to="item.client.slug">{{ item.client.title }}</router-link>
-          </div> -->
+            <div v-html="item.intro"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -147,25 +149,28 @@ h2 {
 }
 
 section {
-  background-color: #f5f5f5;
-  // padding: 0;
 }
 
-.project {
-  background-color: #f5f5f5;
-  // margin-top: -115px;
-  position: relative;
+.client {
+  display: block;
+  font-style: 14px;
+  margin-bottom: 30px;
 
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 115px;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    box-shadow: 0px -2px 41px -5px rgba(0, 0, 0, 0.75);
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
   }
+}
+
+.date {
+  font-style: italic;
+  display: block;
+  font-size: 14px;
+  padding-bottom: 30px;
 }
 
 .block {

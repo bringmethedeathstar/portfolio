@@ -24,11 +24,13 @@ export default {
 $purple: #982898;
 
 #app {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'PT Serif', serif;
+  // font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.5;
   color: #222;
+  background-color: #f5f5f5;
 }
 
 a {
@@ -45,10 +47,9 @@ p {
 }
 
 h1 {
-  @extend .under;
-
   // font-weight: 400;
   font-size: 46px;
+  margin-bottom: 35px;
 }
 
 section {
@@ -65,7 +66,7 @@ img {
   padding-bottom: 10px;
   margin-bottom: 45px;
 
-  &:after, &:before {
+  &:after {
     content: '';
     position: absolute;
     background: $purple;
@@ -73,21 +74,11 @@ img {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    transition: width .3s ease-in-out;
-  }
-
-  &:after {
-    width: 80px;
+    transition: width 0.3s ease-in-out;
+    width: 60px;
     height: 2px;
     bottom: 0;
-  }
-  &:before {
-    // width: 100%;
-    // height: 100%;
-  }
-
-  &:hover:after {
-    width: calc(100% - 5px);
+    transform: skewX(-25deg);
   }
 }
 </style>
