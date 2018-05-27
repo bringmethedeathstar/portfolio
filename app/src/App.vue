@@ -1,10 +1,8 @@
 <script>
-import Head from '@/components/parts/Head';
+import Top from '@/components/parts/Top';
 
 export default {
-  ccomponents: {
-    Head,
-  },
+  components: { Top },
 
   name: 'App',
 };
@@ -12,7 +10,7 @@ export default {
 
 <template>
   <div id="app">
-    <Head />
+    <Top />
 
     <router-view/>
   </div>

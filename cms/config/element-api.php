@@ -4,6 +4,22 @@ use craft\elements\Entry;
 
 return [
   'endpoints' => [
+    'layout' => function() {
+      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+
+      return [
+        'elementType' => Entry::class,
+        'criteria' => ['section' => 'site'],
+        'paginate' => false,
+        'transformer' => function(Entry $entry) {
+          return [
+            'title' => $entry->title,
+            'slug' => $entry->slug,
+          ];
+        },
+      ];
+    },
+
     'intro' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
