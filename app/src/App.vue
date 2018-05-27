@@ -30,7 +30,6 @@ $purple: #982898;
   font-weight: 300;
   line-height: 1.5;
   color: #222;
-  background-color: #f5f5f5;
 }
 
 a {

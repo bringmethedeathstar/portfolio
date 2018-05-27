@@ -1,6 +1,10 @@
 <script>
+import Date from '@/components/parts/Date';
+
 export default {
   props: ['card'],
+
+  components: { Date },
 
   computed: {
     url() {
@@ -18,7 +22,7 @@ export default {
 
     <span class="card-date">
       <router-link :to="card.client.slug">{{ card.client.title }}</router-link>
-      {{ card.date.date | moment('Do MMM YYYY') }}
+      <Date :date="card.date.date" />
     </span>
 
     <router-link :to="url">
