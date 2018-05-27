@@ -1,39 +1,18 @@
 <script>
 import api from '@/resources/base';
-import Card from '@/components/parts/Card';
+import Date from '@/components/parts/Date';
+import Matrix from '@/components/matrix/Blocks';
 
 export default {
-  components: { Card },
+  components: { Date, Matrix },
 
   data() {
     return {
       item: {
-        title: '',
         date: {},
-        slug: '',
-        image: {},
-        url: '',
-        intro: '',
-        link: '',
-        clients: [
-          {
-            title: '',
-            slug: '',
-          },
-        ],
-        topics: [
-          {
-            title: '',
-            slug: '',
-          },
-        ],
-        article: [
-          {
-            type: '',
-            text: '',
-            image: {},
-          },
-        ],
+        client: { slug: '' },
+        topics: [],
+        article: [],
       },
     };
   },
@@ -54,27 +33,10 @@ export default {
 
 <template>
   <div>
-    <!-- <section class="hero" :style="`background-image: url('${item.image.url}')`">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4 offset-sm-2">
-            <h2>{{ item.title }}</h2>
-
-            <div v-html="item.intro"></div>
-          </div>
-
-          <div class="col-sm-4 text-right">
-            <div>{{ item.date.date | moment('Do MMM YYYY') }}</div>
-            <router-link :to="item.client.slug">{{ item.client.title }}</router-link>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <section>
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-sm-6 text-center">
+          <div class="col-lg-6 text-center">
             <router-link :to="item.client.slug" class="client">
               <img :src="item.client.icon" :alt="`${item.client.title} Brand`">
               {{ item.client.title }}
@@ -85,8 +47,8 @@ export default {
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-sm-6 text-center">
-            <p class="date text-center under">{{ item.date.date | moment('Do MMMM YYYY') }}</p>
+          <div class="col-lg-6 text-center">
+            <p class="date text-center under"><Date :date="item.date.date" /></p>
 
             <div v-html="item.intro"></div>
           </div>
@@ -94,61 +56,13 @@ export default {
       </div>
     </section>
 
-    <section>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-sm-10">
-            <div class="project">
-              <div v-for="block in item.article" class="block" :class="block.type">
-                <div v-if="block.type === 'intro'">
-                  <img :src="block.image.url" :alt="block.image.title" />
-
-                  <div v-html="block.text" class="project-text"></div>
-                </div>
-
-                <div v-else>
-                  <div v-html="block.text"></div>
-
-                  <img v-if="block.image.url" :src="block.image.url" :alt="block.image.title" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Matrix :blocks="item.article" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.hero {
-  min-height: 400px;
-  position: relative;
-  color: white;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  font-weight: normal;
-  padding-top: 100px;
-  padding-bottom: 145px;
-
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(#444, 0.8);
-  }
-}
-
-h2 {
-  font-weight: normal;
-  margin-bottom: 60px;
-}
-
 section {
+  padding-bottom: 0;
 }
 
 .client {
@@ -171,22 +85,5 @@ section {
   display: block;
   font-size: 14px;
   padding-bottom: 30px;
-}
-
-.block {
-  margin-bottom: 30px;
-  padding: 0 45px;
-  margin-bottom: 45px;
-  position: relative;
-  z-index: 1;
-
-  &.intro {
-    padding: 0;
-  }
-}
-
-.project-text {
-  padding: 30px 45px;
-  padding-bottom: 0;
 }
 </style>
