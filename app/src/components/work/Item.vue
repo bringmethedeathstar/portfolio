@@ -50,7 +50,7 @@ export default {
           <div class="col-lg-6 text-center">
             <p class="date text-center under"><Date :date="item.date.date" /></p>
 
-            <div v-html="item.intro"></div>
+            <p v-if="item.intro">{{ item.intro }}</p>
           </div>
         </div>
       </div>
