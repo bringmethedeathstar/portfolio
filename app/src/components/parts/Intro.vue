@@ -35,7 +35,7 @@ export default {
 
       <div class="row">
         <div class="col-sm-8">
-          <h1 class="alive">{{ intro.title }}</h1>
+          <h1>Leah Walker</h1>
 
           <div v-html="intro.text"></div>
         </div>

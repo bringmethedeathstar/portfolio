@@ -20,6 +20,26 @@ return [
       ];
     },
 
+    'grid' => function() {
+      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+
+      return [
+        'elementType' => Entry::class,
+        'criteria' => ['id' => 26],
+        'paginate' => false,
+        'transformer' => function(Entry $entry) {
+          $work = Entry::findOne([ 'section' => 'work' ]);
+          $blog = Entry::findOne([ 'section' => 'blog' ]);
+
+          return [
+            'profile' => $entry->profile->one()->url,
+            'work' => $work->main->one()->url ?? '',
+            'blog' => $blog->main->one()->url ?? '',
+          ];
+        },
+      ];
+    },
+
     'intro' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
