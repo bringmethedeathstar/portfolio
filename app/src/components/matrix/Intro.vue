@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div>
-    <img :src="block.image.url" :alt="block.image.title" />
+    <img v-if="block.image" :src="block.image.url" :alt="block.image.title" />
 
     <div v-html="block.text" class="text"></div>
   </div>

@@ -8,7 +8,9 @@ export default {
   <div>
     <div v-html="block.text"></div>
 
-    <img :class="{ push: block.under }" v-if="block.image.url" :src="block.image.url" :alt="block.image.title" />
+    <div class="images">
+      <img :class="{ push: block.under }" v-for="image in block.image" :key="image.url" :src="image.url" :alt="image.title" />
+    </div>
 
     <div v-html="block.under"></div>
   </div>
@@ -17,5 +19,13 @@ export default {
 <style lang="scss" scoped>
 .push {
   margin-bottom: 20px;
+}
+
+img {
+  margin-bottom: 25px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 </style>
