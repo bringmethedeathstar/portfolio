@@ -11,7 +11,7 @@ export default {
 <template>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-sm-10">
+      <div class="col-lg-10">
         
         <div v-for="block in blocks" class="block" :class="block.type">
           <component :is="block.type" :block="block" />
