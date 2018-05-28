@@ -1,12 +1,13 @@
 <script>
-export default {
-};
+export default {};
 </script>
 
 <template>
-  <div>
-    404
-  </div>
+  <section class="container">
+    <h1>Heck.</h1>
+
+    <p>This page seems to be missing</p>
+  </section>
 </template>
 
 <style scoped>
