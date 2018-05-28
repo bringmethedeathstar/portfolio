@@ -123,6 +123,7 @@ return [
               return [
                 'type' => $article->type->handle,
                 'text' => $article->text,
+                'under' => $article->under,
                 'image' => [
                   'title' => $image->title ?? '',
                   'url' => $image ? $image->getUrl('basicProject') : '',

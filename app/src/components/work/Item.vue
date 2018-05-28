@@ -37,7 +37,7 @@ export default {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
-            <router-link :to="item.client.slug" class="client">
+            <router-link :to="`/clients/${item.client.slug}`" class="client" v-if="item.client.slug">
               <img :src="item.client.icon" :alt="`${item.client.title} Brand`">
               {{ item.client.title }}
             </router-link>
