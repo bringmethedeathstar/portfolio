@@ -49,6 +49,7 @@ return [
       return [
         'elementType' => Entry::class,
         'criteria' => ['section' => 'work'],
+        'paginate' => false,
         'transformer' => function(Entry $entry) {
           $image = $entry->main->one();
           $client = $entry->client->one();
@@ -85,7 +86,7 @@ return [
 
       return [
         'elementType' => Entry::class,
-        'criteria' => ['slug' => $slug],
+        'criteria' => ['section' => 'work', 'slug' => $slug],
         'one' => true,
         'transformer' => function(Entry $entry) {
           $image = $entry->main->one();
@@ -107,6 +108,82 @@ return [
               'title' => $client->title,
               'slug' => $client->slug,
               'icon' => $client->icon->one()->getUrl('clientIcon') ?? '',
+            ],
+
+            'topics' => array_map(function($topic) {
+              return [
+                'title' => $topic->title,
+                'slug' => $topic->slug,
+              ];
+            }, $entry->topics->all()),
+
+            'article' => array_map(function($article) {
+              $image = $article->image->one();
+
+              return [
+                'type' => $article->type->handle,
+                'text' => $article->text,
+                'image' => [
+                  'title' => $image->title ?? '',
+                  'url' => $image ? $image->getUrl('basicProject') : '',
+                ],
+              ];
+            }, $entry->basic->all()),
+          ];
+        },
+      ];
+    },
+
+    'blog' => function() {
+      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+
+      return [
+        'elementType' => Entry::class,
+        'criteria' => ['section' => 'blog'],
+        'paginate' => false,
+        'transformer' => function(Entry $entry) {
+          $image = $entry->main->one();
+
+          return [
+            'title' => $entry->title,
+            'slug' => $entry->slug,
+            'date' => $entry->postDate,
+            'intro' => $entry->intro,
+
+            'image' => [
+              'title' => $image->title ?? '',
+              'url' => $image->getUrl('work') ?? '',
+            ],
+
+            'topics' => array_map(function($topic) {
+              return [
+                'title' => $topic->title,
+                'slug' => $topic->slug,
+              ];
+            }, $entry->topics->all()),
+          ];
+        },
+      ];
+    },
+    'blog/<slug:{slug}>' => function($slug) {
+      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+
+      return [
+        'elementType' => Entry::class,
+        'criteria' => ['section' => 'blog', 'slug' => $slug],
+        'one' => true,
+        'transformer' => function(Entry $entry) {
+          $image = $entry->main->one();
+
+          return [
+            'title' => $entry->title,
+            'slug' => $entry->slug,
+            'date' => $entry->postDate,
+            'intro' => $entry->intro,
+
+            'image' => [
+              'title' => $image->title ?? '',
+              'url' => $image ? $image->getUrl('hero') : '',
             ],
 
             'topics' => array_map(function($topic) {

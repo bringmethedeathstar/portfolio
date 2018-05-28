@@ -36,6 +36,7 @@ a {
   &:hover {
     color: inherit;
     text-decoration: none;
+    color: $purple;
   }
 }
 
