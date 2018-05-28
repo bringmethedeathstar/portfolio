@@ -25,7 +25,7 @@ export default {
 <template>
   <div class="container">
     <div class="text-right">
-      <router-link v-for="item in layout" :key="item.slug" :to="item.slug === 'intro' ? '/' : item.slug" class="nav-item">
+      <router-link v-for="item in layout" :key="item.slug" :to="`/${item.slug === 'intro' ? '' : item.slug}`" class="nav-item">
         {{ item.title }}
       </router-link>
     </div>
