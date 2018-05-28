@@ -118,16 +118,21 @@ return [
             }, $entry->topics->all()),
 
             'article' => array_map(function($article) {
-              $image = $article->image->one();
+              if ($article->type->handle === 'intro') {
+                if ($image = $article->image->one()) {
+                  $image = [ 'title' => $image->title, 'url' => $image->getUrl('basicProject') ];
+                }
+              } else {
+               $image = array_map(function($image) {
+                  return [ 'title' => $image->title, 'url' => $image->getUrl('basicProject') ];
+                }, $article->image->all());
+              }
 
               return [
                 'type' => $article->type->handle,
                 'text' => $article->text,
                 'under' => $article->under,
-                'image' => [
-                  'title' => $image->title ?? '',
-                  'url' => $image ? $image->getUrl('basicProject') : '',
-                ],
+                'image' => $image,
               ];
             }, $entry->basic->all()),
           ];
