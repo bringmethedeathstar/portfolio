@@ -28,16 +28,15 @@ return [
         'criteria' => ['id' => 26],
         'one' => true,
         'transformer' => function(Entry $entry) {
-          $image = $entry->main->one();
+          if ($asset = $entry->main->one()) {
+            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+          }
 
           return [
             'title' => $entry->title,
             'slug' => $entry->slug,
             'text' => $entry->simple,
-            'profile' => [
-              'title' => $image->title ?? '',
-              'url' => $image->url ?? '',
-            ],
+            'profile' => $image,
           ];
         },
       ];
@@ -51,8 +50,13 @@ return [
         'criteria' => ['section' => 'work'],
         'paginate' => false,
         'transformer' => function(Entry $entry) {
-          $image = $entry->main->one();
-          $client = $entry->client->one();
+          if ($asset = $entry->main->one()) {
+            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+          }
+
+          if ($query = $entry->client->one()) {
+            $client = [ 'title' => $query->title, 'slug' => $query->slug ];
+          }
 
           return [
             'title' => $entry->title,
@@ -60,22 +64,10 @@ return [
             'date' => $entry->postDate,
             'intro' => $entry->intro,
             'link' => $entry->external,
-
-            'image' => [
-              'title' => $image->title ?? '',
-              'url' => $image->getUrl('work') ?? '',
-            ],
-
-            'client' => [
-              'title' => $client->title,
-              'slug' => $client->slug,
-            ],
-
+            'image' => $image ?? '',
+            'client' => $client ?? '',
             'topics' => array_map(function($topic) {
-              return [
-                'title' => $topic->title,
-                'slug' => $topic->slug,
-              ];
+              return [ 'title' => $topic->title, 'slug' => $topic->slug ];
             }, $entry->topics->all()),
           ];
         },
@@ -89,8 +81,19 @@ return [
         'criteria' => ['section' => 'work', 'slug' => $slug],
         'one' => true,
         'transformer' => function(Entry $entry) {
-          $image = $entry->main->one();
-          $client = $entry->client->one();
+          if ($asset = $entry->main->one()) {
+            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+          }
+
+          if ($query = $entry->client->one()) {
+            $icon = $query->icon->one();
+
+            $client = [
+              'title' => $query->title,
+              'slug' => $query->slug,
+              'icon' => $icon->getUrl('clientIcon') ?? '',
+            ];
+          }
 
           return [
             'title' => $entry->title,
@@ -98,17 +101,8 @@ return [
             'date' => $entry->postDate,
             'intro' => $entry->intro,
             'link' => $entry->external,
-
-            'image' => [
-              'title' => $image->title ?? '',
-              'url' => $image ? $image->getUrl('hero') : '',
-            ],
-            
-            'client' => [
-              'title' => $client->title,
-              'slug' => $client->slug,
-              'icon' => $client->icon->one()->getUrl('clientIcon') ?? '',
-            ],
+            'image' => $image ?? '',
+            'client' => $client ?? '',
 
             'topics' => array_map(function($topic) {
               return [
@@ -148,18 +142,16 @@ return [
         'criteria' => ['section' => 'blog'],
         'paginate' => false,
         'transformer' => function(Entry $entry) {
-          $image = $entry->main->one();
+          if ($asset = $entry->main->one()) {
+            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+          }
 
           return [
             'title' => $entry->title,
             'slug' => $entry->slug,
             'date' => $entry->postDate,
             'intro' => $entry->intro,
-
-            'image' => [
-              'title' => $image->title ?? '',
-              'url' => $image->getUrl('work') ?? '',
-            ],
+            'image' => $image ?? '',
 
             'topics' => array_map(function($topic) {
               return [
@@ -179,7 +171,9 @@ return [
         'criteria' => ['section' => 'blog', 'slug' => $slug],
         'one' => true,
         'transformer' => function(Entry $entry) {
-          $image = $entry->main->one();
+          if ($asset = $entry->main->one()) {
+            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+          }
 
           return [
             'title' => $entry->title,
@@ -187,10 +181,7 @@ return [
             'date' => $entry->postDate,
             'intro' => $entry->intro,
 
-            'image' => [
-              'title' => $image->title ?? '',
-              'url' => $image ? $image->getUrl('hero') : '',
-            ],
+            'image' => $image ?? '',
 
             'topics' => array_map(function($topic) {
               return [
@@ -200,15 +191,14 @@ return [
             }, $entry->topics->all()),
 
             'article' => array_map(function($article) {
-              $image = $article->image->one();
+              if ($asset = $entry->main->one()) {
+                $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+              }
 
               return [
                 'type' => $article->type->handle,
                 'text' => $article->text,
-                'image' => [
-                  'title' => $image->title ?? '',
-                  'url' => $image ? $image->getUrl('basicProject') : '',
-                ],
+                'image' => $image ?? '',
               ];
             }, $entry->basic->all()),
           ];
