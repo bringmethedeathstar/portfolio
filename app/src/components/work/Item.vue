@@ -37,10 +37,12 @@ export default {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
-            <router-link :to="`/clients/${item.client.slug}`" class="client" v-if="item.client.slug">
+            <!-- <router-link :to="`/clients/${item.client.slug}`" class="client" v-if="item.client.slug"> -->
+            <div class="client" v-if="item.client.slug">
               <img :src="item.client.icon" :alt="`${item.client.title} Brand`">
               {{ item.client.title }}
-            </router-link>
+            </div>
+            <!-- </router-link> -->
 
             <h1>{{ item.title }}</h1>
           </div>

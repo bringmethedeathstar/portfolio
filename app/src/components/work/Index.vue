@@ -28,7 +28,7 @@ export default {
 <template>
   <section>
     <div class="container">
-      <h1>My Work</h1>
+      <!-- <h1>My Work</h1> -->
 
       <div class="row">
         <div class="col-sm-6 col-md-4" v-for="entry in list" :key="entry.title">

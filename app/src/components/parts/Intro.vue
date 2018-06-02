@@ -46,8 +46,8 @@ export default {
 
 <style lang="scss" scoped>
 .intro {
-  margin-bottom: 60px;
   font-size: 18px;
+  padding-bottom: 30px;
 }
 
 .profile {

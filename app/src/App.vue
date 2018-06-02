@@ -1,8 +1,8 @@
 <script>
-import Top from '@/components/parts/Top';
+// import Top from '@/components/parts/Top';
 
 export default {
-  components: { Top },
+  // components: { Top },
 
   name: 'App',
 };
@@ -10,7 +10,7 @@ export default {
 
 <template>
   <div id="app">
-    <Top />
+    <!-- <Top /> -->
 
     <router-view/>
   </div>
@@ -26,7 +26,7 @@ $purple: #982898;
   // font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.25;
   color: #222;
 }
 
@@ -42,6 +42,11 @@ a {
 
 p {
   margin-bottom: 25px;
+}
+
+b,
+strong {
+  font-weight: bold;
 }
 
 h1 {

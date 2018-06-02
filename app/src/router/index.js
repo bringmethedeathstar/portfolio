@@ -7,8 +7,8 @@ import Lost from '@/components/single/Lost';
 import Work from '@/components/work/Index';
 import WorkItem from '@/components/work/Item';
 
-import Blog from '@/components/blog/Index';
-import BlogItem from '@/components/blog/Item';
+// import Blog from '@/components/blog/Index';
+// import BlogItem from '@/components/blog/Item';
 
 Vue.use(Router);
 
@@ -28,14 +28,14 @@ export default new Router({
       component: WorkItem,
     },
 
-    {
-      path: '/blog',
-      component: Blog,
-    },
-    {
-      path: '/blog/:slug',
-      component: BlogItem,
-    },
+    // {
+    //   path: '/blog',
+    //   component: Blog,
+    // },
+    // {
+    //   path: '/blog/:slug',
+    //   component: BlogItem,
+    // },
 
     {
       path: '*',

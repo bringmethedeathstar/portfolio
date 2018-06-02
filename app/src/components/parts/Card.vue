@@ -21,15 +21,16 @@ export default {
     </router-link>
 
     <span class="card-date">
-      <router-link :to="card.client.slug">{{ card.client.title }}</router-link>
-      <Date :date="card.date.date" />
+      <!-- <router-link :to="card.client.slug">{{ card.client.title }}</router-link> -->
+      {{ card.client.title }}
+      <div class="date"><Date :date="card.date.date" /></div>
     </span>
 
     <router-link :to="url">
       <span class="card-title">{{ card.title }}</span>
-    </router-link>
 
-    <span class="card-intro">{{ card.intro }}</span>
+      <span class="card-intro">{{ card.intro }}</span>
+    </router-link>
   </div>
 </template>
 
@@ -39,21 +40,29 @@ export default {
 }
 
 .card-image {
-  border-radius: 5px;
-  margin-bottom: 15px;
+  border-radius: 3px;
+  margin-bottom: 5px;
 }
 
 .card-date {
   display: block;
   font-size: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 7.5px;
   color: #888;
+
+  .date {
+    float: right;
+  }
 }
 
 .card-title {
-  font-weight: 500;
+  font-weight: bold;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.card-intro {
+  font-size: 12px;
 }
 
 img {
