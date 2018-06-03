@@ -4,13 +4,7 @@ import api from '@/resources/base';
 export default {
   data() {
     return {
-      intro: {
-        title: '',
-        slug: '',
-        text: '',
-        hero: {},
-        profile: {},
-      },
+      intro: {},
     };
   },
 
@@ -31,11 +25,23 @@ export default {
 <template>
   <section class="intro">
     <div class="container">
-      <!-- <img class="profile" :src="intro.profile.url" :alt="intro.profile.title"> -->
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <div><img class="profile" :src="intro.profile.url" :alt="intro.profile.title"></div>
+          <!-- <div class="client" v-if="item.client.slug">
+            <img :src="item.client.icon" :alt="`${item.client.title} Brand`">
+            {{ item.client.title }}
+          </div> -->
 
-      <div class="row">
-        <div class="col-sm-8">
-          <h1>Leah Walker</h1>
+          <h1 class="under">Leah Walker</h1>
+
+          <!-- <div class="under"></div> -->
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <!-- <p class="date text-center under"><Date :date="item.date.date" /></p> -->
 
           <div v-html="intro.text"></div>
         </div>
@@ -51,8 +57,9 @@ export default {
 }
 
 .profile {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
+  margin-bottom: 10px;
 }
 </style>

@@ -29,7 +29,7 @@ return [
         'one' => true,
         'transformer' => function(Entry $entry) {
           if ($asset = $entry->main->one()) {
-            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('profile') ];
           }
 
           return [
@@ -91,7 +91,7 @@ return [
             $client = [
               'title' => $query->title,
               'slug' => $query->slug,
-              'icon' => $icon->getUrl('clientIcon') ?? '',
+              'icon' => $icon ? $icon->getUrl('clientIcon') : '',
             ];
           }
 
@@ -112,13 +112,15 @@ return [
             }, $entry->topics->all()),
 
             'article' => array_map(function($article) {
+              $image = [];
+
               if ($article->type->handle === 'intro') {
-                if ($image = $article->image->one()) {
-                  $image = [ 'title' => $image->title, 'url' => $image->getUrl('basicProject') ];
+                if ($img = $article->image->one()) {
+                  $image = [ 'title' => $img->title, 'url' => $img->getUrl('basicProject') ];
                 }
               } else {
-               $image = array_map(function($image) {
-                  return [ 'title' => $image->title, 'url' => $image->getUrl('basicProject') ];
+               $image = array_map(function($img) {
+                  return [ 'title' => $img->title, 'url' => $img->getUrl('basicProject') ];
                 }, $article->image->all());
               }
 

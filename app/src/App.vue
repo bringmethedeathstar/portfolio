@@ -66,7 +66,7 @@ img {
 .under {
   display: inline-block;
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   margin-bottom: 45px;
 
   &:after {

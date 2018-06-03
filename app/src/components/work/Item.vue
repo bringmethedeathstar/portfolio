@@ -86,6 +86,5 @@ section {
   font-style: italic;
   display: block;
   font-size: 14px;
-  padding-bottom: 30px;
 }
 </style>
