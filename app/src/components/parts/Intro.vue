@@ -33,7 +33,7 @@ export default {
             {{ item.client.title }}
           </div> -->
 
-          <h1 class="under">Leah Walker</h1>
+          <h1 class="main-title under">Leah Walker</h1>
 
           <!-- <div class="under"></div> -->
         </div>
@@ -51,6 +51,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.main-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 52px;
+}
+
 .intro {
   font-size: 18px;
   padding-bottom: 30px;
@@ -60,6 +65,6 @@ export default {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 </style>
