@@ -21,6 +21,10 @@ export default {
   margin-bottom: 20px;
 }
 
+.images {
+  margin-bottom: 25px;
+}
+
 img {
   margin-bottom: 25px;
 
