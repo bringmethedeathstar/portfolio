@@ -5,6 +5,10 @@ export default {
   // components: { Top },
 
   name: 'App',
+
+  metaInfo: {
+    title: 'Leah Walker',
+  },
 };
 </script>
 

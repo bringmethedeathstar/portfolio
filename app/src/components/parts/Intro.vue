@@ -2,6 +2,18 @@
 import api from '@/resources/base';
 
 export default {
+  metaInfo() {
+    return {
+      meta: [
+        {
+          vmid: 'description',
+          name: 'description',
+          content: this.description,
+        },
+      ],
+    };
+  },
+
   data() {
     return {
       intro: {},
@@ -13,6 +25,13 @@ export default {
       api.get('/intro').then(intro => {
         this.intro = intro.data;
       });
+    },
+  },
+
+  computed: {
+    description() {
+      const regex = /(<([^>]+)>)/gi;
+      return this.intro.text.replace(regex, '');
     },
   },
 

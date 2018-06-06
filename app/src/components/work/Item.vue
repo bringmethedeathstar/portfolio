@@ -4,6 +4,15 @@ import Date from '@/components/parts/Date';
 import Matrix from '@/components/matrix/Blocks';
 
 export default {
+  metaInfo() {
+    return {
+      title: this.item.title,
+      meta: [
+        { vmid: 'description', name: 'description', content: this.item.intro },
+      ],
+    };
+  },
+
   components: { Date, Matrix },
 
   data() {
