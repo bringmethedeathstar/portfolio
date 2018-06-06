@@ -16,39 +16,55 @@ export default {
 
 <template>
   <div class="crd">
-    <router-link :to="url">
-      <img class="card-image" :src="card.image.url" :alt="card.image.title" />
+    <router-link :to="url" class="card-image">
+      <img v-if="card.image" :src="card.image.url" :alt="card.image.title" />
     </router-link>
 
-    <span class="card-date">
-      <!-- <router-link :to="card.client.slug">{{ card.client.title }}</router-link> -->
-      {{ card.client.title }}
-      <div class="date"><Date :date="card.date.date" /></div>
-    </span>
+    <div class="card-inner">
+      <span class="card-date">
+        <!-- <router-link :to="card.client.slug">{{ card.client.title }}</router-link> -->
+        {{ card.client.title }}
+        <div class="date"><Date :date="card.date.date" /></div>
+      </span>
 
-    <router-link :to="url">
-      <span class="card-title">{{ card.title }}</span>
+      <router-link :to="url">
+        <span class="card-title">{{ card.title }}</span>
 
-      <span class="card-intro">{{ card.intro }}</span>
-    </router-link>
+        <span class="card-intro">{{ card.intro }}</span>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .crd {
-  margin-bottom: 45px;
+  margin-bottom: 60px;
 }
 
 .card-image {
-  border-radius: 3px;
-  margin-bottom: 5px;
+  display: block;
+  border-radius: 5px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.025);
+  }
+}
+
+.card-inner {
+  padding: 25px 5px 0 5px;
 }
 
 .card-date {
+  margin-bottom: 10px;
   display: block;
-  font-size: 10px;
-  margin-bottom: 7.5px;
-  color: #888;
+  font-size: 12px;
+  color: #7d6dff;
 
   .date {
     float: right;
@@ -63,9 +79,5 @@ export default {
 
 .card-intro {
   font-size: 12px;
-}
-
-img {
-  width: 100%;
 }
 </style>

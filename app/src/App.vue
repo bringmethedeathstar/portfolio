@@ -5,6 +5,10 @@ export default {
   // components: { Top },
 
   name: 'App',
+
+  metaInfo: {
+    title: 'Leah Walker',
+  },
 };
 </script>
 
@@ -19,7 +23,7 @@ export default {
 <style lang="scss">
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
-$purple: #982898;
+$purple: #7d6dff;
 
 #app {
   font-family: 'PT Serif', serif;
