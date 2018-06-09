@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "leahwalker.me",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "Portfolio & Blog for writer, Leah Walker",
   "author": "DaveP <dave@wearecrystal.uk>",
   "private": true,
   "scripts": {
@@ -75,6 +75,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
+    "not ie <= 10"
   ]
 }
