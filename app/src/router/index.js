@@ -38,6 +38,13 @@ export default new Router({
     // },
 
     {
+      path: '/admin',
+      beforeEnter() {
+        window.location = process.env.API;
+      },
+    },
+
+    {
       path: '*',
       component: Lost,
     },
