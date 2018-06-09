@@ -72,7 +72,12 @@ export default {
 
 .intro {
   font-size: 18px;
+  padding-top: 30px;
   padding-bottom: 30px;
+
+  @media only screen and (min-width: 480px) {
+    padding-top: 60px;
+  }
 }
 
 .profile {

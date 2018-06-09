@@ -25,10 +25,14 @@ export default {
 <style lang="scss" scoped>
 .block {
   margin-bottom: 30px;
-  padding: 0 45px;
+  padding: 0 15px;
   margin-bottom: 45px;
   position: relative;
   z-index: 1;
+
+  @media only screen and (min-width: 480px) {
+    padding: 0 45px;
+  }
 
   &.intro {
     padding: 0;
