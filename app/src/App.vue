@@ -16,7 +16,9 @@ export default {
   <div id="app">
     <!-- <Top /> -->
 
-    <router-view/>
+    <transition name="fade">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -95,5 +97,20 @@ img {
     bottom: 0;
     transform: skewX(-25deg);
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+
+.fade-enter-active {
+  transition-delay: 0.3s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>
