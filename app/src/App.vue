@@ -55,12 +55,20 @@ strong {
 
 h1 {
   // font-weight: 400;
-  font-size: 46px;
+  font-size: 28px;
   margin-bottom: 35px;
+
+  @media only screen and (min-width: 480px) {
+    font-size: 46px;
+  }
 }
 
 section {
-  padding: 60px;
+  padding: 15px;
+
+  @media only screen and (min-width: 480px) {
+    padding: 60px;
+  }
 }
 
 img {
