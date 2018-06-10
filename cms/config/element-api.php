@@ -116,11 +116,11 @@ return [
 
               if ($article->type->handle === 'intro') {
                 if ($img = $article->image->one()) {
-                  $image = [ 'title' => $img->title, 'url' => $img->getUrl('basicProject') ];
+                  $image = [ 'title' => $img->title, 'url' => $img->getUrl($img->style->value) ];
                 }
               } else {
                $image = array_map(function($img) {
-                  return [ 'title' => $img->title, 'url' => $img->getUrl('basicProject') ];
+                  return [ 'title' => $img->title, 'url' => $img->getUrl($img->style->value) ];
                 }, $article->image->all());
               }
 
