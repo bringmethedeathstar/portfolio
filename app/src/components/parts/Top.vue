@@ -1,40 +1,49 @@
 <script>
-import api from '@/resources/base';
+/* eslint-disable no-unused-vars */
+
+import logo from '@/assets/logo.svg';
+
+// import api from '@/resources/base';
 
 export default {
-  data() {
-    return {
-      layout: {},
-    };
-  },
-
-  methods: {
-    fetch() {
-      api.get('layout').then(res => {
-        this.layout = res.data.data;
-      });
-    },
-  },
-
-  created() {
-    this.fetch();
-  },
+  // data() {
+  //   return {
+  //     layout: {},
+  //   };
+  // },
+  // methods: {
+  //   fetch() {
+  //     api.get('layout').then(res => {
+  //       this.layout = res.data.data;
+  //     });
+  //   },
+  // },
+  // created() {
+  //   this.fetch();
+  // },
 };
 </script>
 
 <template>
-  <div class="container">
-    <div class="text-right">
+  <header class="container">
+    <router-link to="/"><svg class="logo"><use xlink:href="#logo" /></svg></router-link>
+
+    <!-- <div class="text-right">
       <router-link v-for="item in layout" :key="item.slug" :to="`/${item.slug === 'intro' ? '' : item.slug}`" class="nav-item">
         {{ item.title }}
       </router-link>
-    </div>
-  </div>
+    </div> -->
+  </header>
 </template>
 
 <style lang="scss" scoped>
-.head {
-  // padding: 30px 0;
+header {
+  padding: 15px 0;
+}
+
+.logo {
+  width: 50px;
+  height: 42px;
 }
 
 .nav-item {
