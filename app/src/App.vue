@@ -33,7 +33,7 @@ $purple: #7d6dff;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.25;
-  color: #222;
+  color: #333;
 }
 
 a {
