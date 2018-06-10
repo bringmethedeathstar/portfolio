@@ -1,8 +1,8 @@
 <script>
-// import Top from '@/components/parts/Top';
+import Top from '@/components/parts/Top';
 
 export default {
-  // components: { Top },
+  components: { Top },
 
   name: 'App',
 
@@ -14,7 +14,7 @@ export default {
 
 <template>
   <div id="app">
-    <!-- <Top /> -->
+    <Top />
 
     <transition name="fade">
       <router-view/>
