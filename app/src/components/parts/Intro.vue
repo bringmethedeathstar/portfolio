@@ -49,7 +49,7 @@ export default {
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
-          <div><img class="profile" :src="intro.profile.url" :alt="intro.profile.title"></div>
+          <div class="profile"><img :src="intro.profile.url" :alt="intro.profile.title"></div>
 
           <h1 class="main-title under">Leah Walker</h1>
         </div>
@@ -84,6 +84,15 @@ export default {
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
   margin-bottom: 30px;
+
+  img {
+    margin-left: -1px;
+    margin-top: -1px;
+    width: 102px;
+    height: 102px;
+  }
 }
 </style>
