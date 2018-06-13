@@ -120,13 +120,18 @@ return [
                 }
               } else {
                $image = array_map(function($img) {
-                  return [ 'title' => $img->title, 'url' => $img->getUrl($img->style->value) ];
+                  return [
+                    'title' => $img->title,
+                    'url' => $img->getUrl($img->style->value),
+                    'layout' => $img->imgWidth->value
+                  ];
                 }, $article->image->all());
               }
 
               return [
                 'type' => $article->type->handle,
                 'text' => $article->text,
+                'id' => $article->id,
                 'under' => $article->under,
                 'image' => $image,
               ];
