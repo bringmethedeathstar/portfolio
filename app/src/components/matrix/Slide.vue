@@ -9,7 +9,7 @@ export default {
     <div v-html="block.text"></div>
 
     <div class="images">
-      <img :class="{ push: block.under }" v-for="image in block.image" :key="image.url" :src="image.url" :alt="image.title" />
+      <img :class="image.layout" v-for="image in block.image" :key="image.url" :src="image.url" :alt="image.title" />
     </div>
 
     <div v-html="block.under"></div>
@@ -17,12 +17,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.push {
-  margin-bottom: 20px;
-}
-
 .images {
   margin-bottom: 25px;
+  text-align: center;
 }
 
 img {
@@ -31,5 +28,9 @@ img {
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.contain {
+  max-width: 400px;
 }
 </style>

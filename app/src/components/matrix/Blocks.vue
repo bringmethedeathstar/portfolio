@@ -13,7 +13,7 @@ export default {
     <div class="row justify-content-center">
       <div class="col-lg-10">
         
-        <div v-for="block in blocks" class="block" :class="block.type">
+        <div v-for="block in blocks" :key="block.id" class="block" :class="block.type">
           <component :is="block.type" :block="block" />
         </div>
       

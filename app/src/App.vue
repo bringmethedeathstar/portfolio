@@ -34,6 +34,7 @@ $purple: #7d6dff;
   font-weight: 300;
   line-height: 1.25;
   color: #333;
+  // padding-bottom: 60px;
 }
 
 a {
