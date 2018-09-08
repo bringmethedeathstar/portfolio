@@ -47,7 +47,7 @@ return [
 
       return [
         'elementType' => Entry::class,
-        'criteria' => ['section' => 'work'],
+        'criteria' => ['section' => 'work', 'orderBy' => 'postDate desc'],
         'paginate' => false,
         'transformer' => function(Entry $entry) {
           if ($asset = $entry->main->one()) {
