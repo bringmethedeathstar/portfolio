@@ -55,7 +55,7 @@ export default {
             <div class="clients">
               <div v-for="client in clients" :key="client.id" class="client">
                 <img :class="`client-${client.iconStyle}`" :src="client.icon" :alt="`${client.title} Brand`">
-                <div class="client-name">{{ client.title }}</div>
+                <div v-if="client.show" class="client-name">{{ client.title }}</div>
               </div>
             </div>
 

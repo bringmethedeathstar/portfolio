@@ -101,6 +101,7 @@ return [
                 'title' => $client->title,
                 'slug' => $client->slug,
                 'iconStyle' => $client->iconStyle->value,
+                'show' => $client->show,
                 'icon' => $icon ? $icon->getUrl('clientIcon') : '',
               ];
             }, $entry->client->all()),
