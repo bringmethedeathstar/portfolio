@@ -21,9 +21,10 @@
   "require": {
     "vlucas/phpdotenv": "^2.4.0",
     "lukeyouell/craft-sidebarthemes": "1.0.5",
-    "craftcms/element-api": "2.5.2",
-    "craftcms/redactor": "1.1.0",
-    "craftcms/cms": "3.0.23.1"
+    "craftcms/element-api": "2.5.4",
+    "craftcms/redactor": "2.1.6",
+    "craftcms/cms": "3.0.23.1",
+    "supercool/buttonbox": "2.0.2"
   },
   "autoload": {
     "psr-4": {

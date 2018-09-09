@@ -34,6 +34,12 @@ export default {
     },
   },
 
+  computed: {
+    clients() {
+      return this.item.clients ? this.item.clients.reverse() : [];
+    },
+  },
+
   created() {
     this.fetch();
   },
@@ -46,12 +52,12 @@ export default {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
-            <!-- <router-link :to="`/clients/${item.client.slug}`" class="client" v-if="item.client.slug"> -->
-            <div class="client" v-if="item.client.slug">
-              <img :src="item.client.icon" :alt="`${item.client.title} Brand`">
-              {{ item.client.title }}
+            <div class="clients">
+              <div v-for="client in clients" :key="client.id" class="client">
+                <img :class="`client-${client.iconStyle}`" :src="client.icon" :alt="`${client.title} Brand`">
+                <div v-if="client.show" class="client-name">{{ client.title }}</div>
+              </div>
             </div>
-            <!-- </router-link> -->
 
             <h1>{{ item.title }}</h1>
           </div>
@@ -76,18 +82,46 @@ section {
   padding-bottom: 0;
 }
 
+.clients {
+  position: relative;
+}
+
 .client {
   display: block;
   font-style: 14px;
   margin-bottom: 30px;
 
   img {
+    background-color: #fff;
     display: block;
     margin: 0 auto;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
     margin-bottom: 10px;
+
+    &.client-circle {
+      border-radius: 50%;
+    }
+  }
+
+  & + & {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(10px);
+    margin: 0;
+
+    .client-name {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
