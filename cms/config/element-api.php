@@ -85,16 +85,6 @@ return [
             $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
           }
 
-          if ($query = $entry->client->one()) {
-            $icon = $query->icon->one();
-
-            $client = [
-              'title' => $query->title,
-              'slug' => $query->slug,
-              'icon' => $icon ? $icon->getUrl('clientIcon') : '',
-            ];
-          }
-
           return [
             'title' => $entry->title,
             'slug' => $entry->slug,
@@ -102,7 +92,18 @@ return [
             'intro' => $entry->intro,
             'link' => $entry->external,
             'image' => $image ?? '',
-            'client' => $client ?? '',
+
+            'clients' => array_map(function($client) {
+              $icon = $client->icon->one();
+
+              return [
+                'id' => $client->id,
+                'title' => $client->title,
+                'slug' => $client->slug,
+                'iconStyle' => $client->iconStyle->value,
+                'icon' => $icon ? $icon->getUrl('clientIcon') : '',
+              ];
+            }, $entry->client->all()),
 
             'topics' => array_map(function($topic) {
               return [
