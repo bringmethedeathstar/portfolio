@@ -10,6 +10,10 @@ export default {
     url() {
       return `/work/${this.card.slug}`;
     },
+
+    client() {
+      return this.card.client[0];
+    },
   },
 };
 </script>
@@ -17,19 +21,18 @@ export default {
 <template>
   <div class="crd">
     <router-link :to="url" class="card-image">
-      <img v-if="card.image" :src="card.image.url" :alt="card.image.title" />
+      <img v-if="card.main" :src="card.main.work" :alt="card.main.title" />
     </router-link>
 
     <div class="card-inner">
       <span class="card-date">
-        <!-- <router-link :to="card.client.slug">{{ card.client.title }}</router-link> -->
-        {{ card.client.title }}
+        <!-- <router-link :to="client.slug">{{ client.title }}</router-link> -->
+        {{ client.title }}
         <div class="date"><Date :date="card.date.date" /></div>
       </span>
 
       <router-link :to="url">
         <span class="card-title">{{ card.title }}</span>
-
         <span class="card-intro">{{ card.intro }}</span>
       </router-link>
     </div>

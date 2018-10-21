@@ -31,7 +31,7 @@ export default {
       <!-- <h1>My Work</h1> -->
 
       <div class="row">
-        <div class="col-sm-6 col-md-4" v-for="entry in list" :key="entry.title">
+        <div class="col-sm-6 col-md-4" v-for="entry in list" :key="entry.id">
           <Card :card="entry" />
         </div>
       </div>

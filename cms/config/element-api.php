@@ -46,26 +46,17 @@ return [
         'criteria' => ['section' => 'work', 'orderBy' => 'postDate desc'],
         'paginate' => false,
         'transformer' => function(Entry $entry) {
-          if ($asset = $entry->main->one()) {
-            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
-          }
+          $ratchet = new Fields([
+            'fields' => [ 'main' => ['transforms' => 'work'] ],
+            '^exclude' => ['basic', 'topics'],
+            '^include' => [
+              'date' => function($entry) {
+                return $entry->postDate;
+              },
+            ],
+          ]);
 
-          if ($query = $entry->client->one()) {
-            $client = [ 'title' => $query->title, 'slug' => $query->slug ];
-          }
-
-          return [
-            'title' => $entry->title,
-            'slug' => $entry->slug,
-            'date' => $entry->postDate,
-            'intro' => $entry->intro,
-            'link' => $entry->external,
-            'image' => $image ?? '',
-            'client' => $client ?? '',
-            'topics' => array_map(function($topic) {
-              return [ 'title' => $topic->title, 'slug' => $topic->slug ];
-            }, $entry->topics->all()),
-          ];
+          return $ratchet->run($entry);
         },
       ];
     },
