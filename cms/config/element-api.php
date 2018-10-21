@@ -143,76 +143,76 @@ return [
       ];
     },
 
-    'blog' => function() {
-      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+    // 'blog' => function() {
+    //   \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
-      return [
-        'elementType' => Entry::class,
-        'criteria' => ['section' => 'blog'],
-        'paginate' => false,
-        'transformer' => function(Entry $entry) {
-          if ($asset = $entry->main->one()) {
-            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
-          }
+    //   return [
+    //     'elementType' => Entry::class,
+    //     'criteria' => ['section' => 'blog'],
+    //     'paginate' => false,
+    //     'transformer' => function(Entry $entry) {
+    //       if ($asset = $entry->main->one()) {
+    //         $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+    //       }
 
-          return [
-            'title' => $entry->title,
-            'slug' => $entry->slug,
-            'date' => $entry->postDate,
-            'intro' => $entry->intro,
-            'image' => $image ?? '',
+    //       return [
+    //         'title' => $entry->title,
+    //         'slug' => $entry->slug,
+    //         'date' => $entry->postDate,
+    //         'intro' => $entry->intro,
+    //         'image' => $image ?? '',
 
-            'topics' => array_map(function($topic) {
-              return [
-                'title' => $topic->title,
-                'slug' => $topic->slug,
-              ];
-            }, $entry->topics->all()),
-          ];
-        },
-      ];
-    },
-    'blog/<slug:{slug}>' => function($slug) {
-      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+    //         'topics' => array_map(function($topic) {
+    //           return [
+    //             'title' => $topic->title,
+    //             'slug' => $topic->slug,
+    //           ];
+    //         }, $entry->topics->all()),
+    //       ];
+    //     },
+    //   ];
+    // },
+    // 'blog/<slug:{slug}>' => function($slug) {
+    //   \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
-      return [
-        'elementType' => Entry::class,
-        'criteria' => ['section' => 'blog', 'slug' => $slug],
-        'one' => true,
-        'transformer' => function(Entry $entry) {
-          if ($asset = $entry->main->one()) {
-            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
-          }
+    //   return [
+    //     'elementType' => Entry::class,
+    //     'criteria' => ['section' => 'blog', 'slug' => $slug],
+    //     'one' => true,
+    //     'transformer' => function(Entry $entry) {
+    //       if ($asset = $entry->main->one()) {
+    //         $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+    //       }
 
-          return [
-            'title' => $entry->title,
-            'slug' => $entry->slug,
-            'date' => $entry->postDate,
-            'intro' => $entry->intro,
+    //       return [
+    //         'title' => $entry->title,
+    //         'slug' => $entry->slug,
+    //         'date' => $entry->postDate,
+    //         'intro' => $entry->intro,
 
-            'image' => $image ?? '',
+    //         'image' => $image ?? '',
 
-            'topics' => array_map(function($topic) {
-              return [
-                'title' => $topic->title,
-                'slug' => $topic->slug,
-              ];
-            }, $entry->topics->all()),
+    //         'topics' => array_map(function($topic) {
+    //           return [
+    //             'title' => $topic->title,
+    //             'slug' => $topic->slug,
+    //           ];
+    //         }, $entry->topics->all()),
 
-            'article' => array_map(function($article) {
-              if ($asset = $entry->main->one()) {
-                $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
-              }
+    //         'article' => array_map(function($article) {
+    //           if ($asset = $entry->main->one()) {
+    //             $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
+    //           }
 
-              return [
-                'type' => $article->type->handle,
-                'text' => $article->text,
-                'image' => $image ?? '',
-              ];
-            }, $entry->basic->all()),
-          ];
-        },
-      ];
-    },
+    //           return [
+    //             'type' => $article->type->handle,
+    //             'text' => $article->text,
+    //             'image' => $image ?? '',
+    //           ];
+    //         }, $entry->basic->all()),
+    //       ];
+    //     },
+    //   ];
+    // },
   ]
 ];
