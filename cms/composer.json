@@ -25,6 +25,7 @@
     "craftcms/redactor": "2.1.6",
     "craftcms/cms": "3.0.27.1",
     "supercool/buttonbox": "2.0.2",
+    "crystal-uk/ratchet": "^3.4"
   },
   "autoload": {
     "psr-4": {
