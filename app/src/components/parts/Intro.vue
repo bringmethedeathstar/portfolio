@@ -17,8 +17,8 @@ export default {
   data() {
     return {
       intro: {
-        profile: {},
-        text: '',
+        main: {},
+        simple: '',
       },
     };
   },
@@ -33,8 +33,7 @@ export default {
 
   computed: {
     description() {
-      const regex = /(<([^>]+)>)/gi;
-      return this.intro.text.replace(regex, '');
+      return this.intro.simple.replace(/(<([^>]+)>)/gi, '');
     },
   },
 
@@ -49,7 +48,7 @@ export default {
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
-          <div class="profile"><img :src="intro.profile.url" :alt="intro.profile.title"></div>
+          <div class="profile"><img :src="intro.main.profile" :alt="intro.main.title"></div>
 
           <h1 class="main-title under">Leah Walker</h1>
         </div>
@@ -57,7 +56,7 @@ export default {
 
       <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
-          <div v-html="intro.text"></div>
+          <div v-html="intro.simple"></div>
         </div>
       </div>
     </div>

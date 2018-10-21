@@ -1,6 +1,7 @@
 <?php
 
 use craft\elements\Entry;
+use crystal\ratchet\Fields;
 
 return [
   'endpoints' => [
@@ -28,16 +29,11 @@ return [
         'criteria' => ['id' => 26],
         'one' => true,
         'transformer' => function(Entry $entry) {
-          if ($asset = $entry->main->one()) {
-            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('profile') ];
-          }
+          $ratchet = new Fields([
+            'fields' => [ 'main' => ['transforms' => 'profile'] ],
+          ]);
 
-          return [
-            'title' => $entry->title,
-            'slug' => $entry->slug,
-            'text' => $entry->simple,
-            'profile' => $image,
-          ];
+          return $ratchet->run($entry);
         },
       ];
     },
