@@ -30,7 +30,10 @@ return [
         'one' => true,
         'transformer' => function(Entry $entry) {
           $ratchet = new Fields([
-            'fields' => [ 'main' => ['transforms' => 'profile'] ],
+            'fields' => [
+              'main' => ['transforms' => ['work']],
+              'featuredWork' => ['only' => ['main', 'intro']]
+            ],
           ]);
 
           return $ratchet->run($entry);
