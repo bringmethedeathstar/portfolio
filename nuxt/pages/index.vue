@@ -17,13 +17,13 @@ export default {
 <template>
   <div class="container">
     <div class="container-thin">
-      <div class="intro mb-24">
+      <div class="intro push">
         <h1 class="text-xl">Leah Walker</h1>
         <div v-html="page.simple"></div>
       </div>
 
       <div
-        class="flex -mx-8 mb-24"
+        class="flex -mx-8 push"
         :class="{ 'flex-row-reverse': i % 2 }"
         v-for="(work, i) in page.featuredWork"
         :key="work.id"

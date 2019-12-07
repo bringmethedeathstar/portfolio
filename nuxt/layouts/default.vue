@@ -1,7 +1,7 @@
 <template>
   <div class="relative overflow-hidden">
     <div class="container">
-      <header class="py-4 mb-12 text-center border-b">
+      <header class="py-4 push text-center border-b">
         <nav>
           <n-link to="/">Home</n-link>
           <n-link to="/work">Portfolio</n-link>
@@ -37,5 +37,9 @@ pre {
 .container-thin {
   @apply mx-auto;
   max-width: 1000px;
+}
+
+.push {
+  margin-bottom: 8rem;
 }
 </style>
