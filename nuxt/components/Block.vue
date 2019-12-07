@@ -24,7 +24,7 @@ export default {
 </template>
 
 <style scoped>
-.grayscale {
+.grayscale * {
   filter: grayscale();
 }
 </style>
