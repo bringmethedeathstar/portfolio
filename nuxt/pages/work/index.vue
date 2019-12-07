@@ -6,7 +6,8 @@ export default {
 
       return { work };
     } catch (e) {
-      error(e);
+      console.error(e);
+      error(e.message);
     }
   },
 

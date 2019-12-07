@@ -1,4 +1,5 @@
 import dotenv from 'dotenv/config';
+import axios from 'axios';
 
 export default {
   mode: 'universal',
@@ -36,6 +37,17 @@ export default {
 
   axios: {
     baseURL: process.env.API_URL,
+  },
+
+  generate: {
+    routes() {
+      return axios
+        .get(`${process.env.API_URL}generate`)
+        .then(({ data }) => data)
+        .catch(e => console.error(e));
+    },
+
+    fallback: true,
   },
 
   build: {

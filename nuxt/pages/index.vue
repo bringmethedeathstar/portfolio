@@ -10,7 +10,8 @@ export default {
 
       return { page };
     } catch (e) {
-      error(e);
+      console.error(e);
+      error(e.message);
     }
   },
 

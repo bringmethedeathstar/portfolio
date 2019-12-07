@@ -5,23 +5,23 @@ use crystal\ratchet\Fields;
 
 return [
   'endpoints' => [
-    'layout' => function() {
+    'rest/generate' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
       return [
         'elementType' => Entry::class,
-        'criteria' => ['section' => 'site'],
+        'criteria' => ['id' => 26],
+        'one' => true,
         'paginate' => false,
-        'transformer' => function(Entry $entry) {
-          return [
-            'title' => $entry->title,
-            'slug' => $entry->slug,
-          ];
+        'transformer' => function() {
+          return array_map(function($entry) {
+            return '/' . ($entry->slug === 'intro' ? '' : $entry->uri);
+          }, Entry::findAll());
         },
       ];
     },
 
-    'intro' => function() {
+    'rest/intro' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
       return [
@@ -41,7 +41,27 @@ return [
       ];
     },
 
-    'work' => function() {
+    'rest/about' => function() {
+      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+
+      return [
+        'elementType' => Entry::class,
+        'criteria' => ['id' => 2671],
+        'one' => true,
+        'transformer' => function(Entry $entry) {
+          $ratchet = new Fields([
+            // 'fields' => [
+            //   'main' => ['transforms' => ['profile', 'featured', 'work']],
+            //   'featuredWork' => ['only' => ['main', 'intro']]
+            // ],
+          ]);
+
+          return $ratchet->run($entry);
+        },
+      ];
+    },
+
+    'rest/work' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
       return [
@@ -63,7 +83,8 @@ return [
         },
       ];
     },
-    'work/<slug:{slug}>' => function($slug) {
+
+    'rest/work/<slug:{slug}>' => function($slug) {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
       return [
@@ -89,7 +110,7 @@ return [
       ];
     },
 
-    // 'blog' => function() {
+    // 'rest/log' => function() {
     //   \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
     //   return [
@@ -118,7 +139,7 @@ return [
     //     },
     //   ];
     // },
-    // 'blog/<slug:{slug}>' => function($slug) {
+    // 'rest/blog/<slug:{slug}>' => function($slug) {
     //   \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
     //   return [
