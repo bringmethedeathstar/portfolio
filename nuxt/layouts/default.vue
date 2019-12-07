@@ -9,7 +9,6 @@ export default {
 <template>
   <div class="relative overflow-hidden">
     <div class="container">
-      <header class="py-4 mb-16 border-b border-red-200">
         <nav class="flex items-center justify-center">
           <n-link class="mx-4" to="/">Home</n-link>
           <n-link class="mx-4" to="/work">Portfolio</n-link>
