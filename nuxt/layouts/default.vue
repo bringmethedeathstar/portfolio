@@ -9,7 +9,7 @@ export default {
 <template>
   <div class="relative overflow-hidden">
     <div class="container">
-      <header class="py-4 mb-16 border-b">
+      <header class="py-4 mb-16 border-b border-red-200">
         <nav class="flex items-center justify-center">
           <n-link class="mx-4" to="/">Home</n-link>
           <n-link class="mx-4" to="/work">Portfolio</n-link>
@@ -22,6 +22,13 @@ export default {
     </div>
 
     <nuxt />
+
+    <footer class="bg-primary py-8 text-center">
+      <n-link class="text-white flex flex-col items-center" to="/contact">
+        <Dash />Hire Me
+        <Dash rotate="true" />
+      </n-link>
+    </footer>
   </div>
 </template>
 
@@ -47,8 +54,7 @@ pre {
   @apply p-4 mb-4 text-xs text-white bg-gray-800 overflow-scroll;
 }
 
-.container-thin {
-  @apply mx-auto;
+.container {
   max-width: 1000px;
 }
 
