@@ -11,6 +11,10 @@ module.exports = {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
       },
+
+      colors: {
+        primary: '#e53e3e',
+      },
     },
   },
   variants: {},

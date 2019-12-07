@@ -1,11 +1,22 @@
+<script>
+import Dash from '~/components/Dash';
+
+export default {
+  components: { Dash },
+};
+</script>
+
 <template>
   <div class="relative overflow-hidden">
     <div class="container">
-      <header class="py-4 push text-center border-b">
-        <nav>
-          <n-link to="/">Home</n-link>
-          <n-link to="/work">Portfolio</n-link>
-          <n-link to="/contact">Contact</n-link>
+      <header class="py-4 mb-16 border-b">
+        <nav class="flex items-center justify-center">
+          <n-link class="mx-4" to="/">Home</n-link>
+          <n-link class="mx-4" to="/work">Portfolio</n-link>
+          <n-link class="mx-4 flex flex-col items-center" to="/contact">
+            <Dash />Hire Me
+            <Dash rotate="true" />
+          </n-link>
         </nav>
       </header>
     </div>
@@ -17,17 +28,19 @@
 <style lang="postcss">
 html {
   @apply font-roboto tracking-wide;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   line-height: 1.6;
   font-size: 18px;
 }
 
-h1 {
-  @apply font-bold text-red-500;
+h1,
+h2 {
+  @apply text-4xl font-bold leading-tight text-primary mb-8;
 }
 
+.nuxt-link-exact-active,
 a:hover {
-  @apply text-red-500;
+  @apply text-primary;
 }
 
 pre {

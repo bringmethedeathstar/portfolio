@@ -31,7 +31,7 @@ return [
         'transformer' => function(Entry $entry) {
           $ratchet = new Fields([
             'fields' => [
-              'main' => ['transforms' => ['work']],
+              'main' => ['transforms' => ['profile', 'featured']],
               'featuredWork' => ['only' => ['main', 'intro']]
             ],
           ]);
@@ -50,7 +50,7 @@ return [
         'paginate' => false,
         'transformer' => function(Entry $entry) {
           $ratchet = new Fields([
-            'fields' => [ 'main' => ['transforms' => 'work'] ],
+            'fields' => ['main' => ['transforms' => ['work']]],
             '^exclude' => ['basic', 'topics'],
             '^include' => [
               'date' => function($entry) {
