@@ -9,10 +9,11 @@ export default {
 <template>
   <div class="relative overflow-hidden">
     <div class="container">
+      <header class="py-4 mb-16 border-b">
         <nav class="flex items-center justify-center">
           <n-link class="mx-4" to="/">Home</n-link>
           <n-link class="mx-4" to="/work">Portfolio</n-link>
-          <n-link class="mx-4 flex flex-col items-center" to="/contact">
+          <n-link class="mx-4 flex flex-col items-center" to="/about">
             <Dash />Hire Me
             <Dash rotate="true" />
           </n-link>
@@ -23,7 +24,7 @@ export default {
     <nuxt />
 
     <footer class="bg-primary py-8 text-center">
-      <n-link class="text-white flex flex-col items-center" to="/contact">
+      <n-link class="text-white flex flex-col items-center" to="/about">
         <Dash />Hire Me
         <Dash rotate="true" />
       </n-link>

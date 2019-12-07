@@ -3,6 +3,7 @@ import Block from '~/components/Block';
 
 export default {
   components: { Block },
+
   async asyncData({ $axios, error }) {
     try {
       const page = await $axios.$get('intro');
@@ -24,7 +25,7 @@ export default {
       title="Leah Walker"
       :text="page.simple"
       :image="page.main.profile"
-      :link="{ to: '/contact', title: 'Hire Me' }"
+      :link="{ to: '/about', title: 'Hire Me' }"
     />
 
     <h2>My Work</h2>
@@ -45,7 +46,4 @@ export default {
 </template>
 
 <style scoped>
-.profile {
-  filter: grayscale();
-}
 </style>
