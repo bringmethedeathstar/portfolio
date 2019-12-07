@@ -2,6 +2,8 @@
 import Block from '~/components/Block';
 
 export default {
+  transition: 'page',
+
   components: { Block },
 
   async asyncData({ $axios, error }) {
@@ -21,13 +23,8 @@ export default {
 
 <template>
   <div class="container">
-    <Block
-      flip="true"
-      title="Leah Walker"
-      :text="page.simple"
-      :image="page.main"
-      :link="{ to: '/about', title: 'Hire Me' }"
-    />
+    <Block flip="true" title="Leah Walker" :text="page.simple" :image="page.main" />
+    <!-- :link="{ to: '/about', title: 'Hire Me' }" -->
 
     <h2>My Work</h2>
     <Block

@@ -2,6 +2,8 @@
 import Block from '~/components/Block';
 
 export default {
+  transition: 'page',
+
   components: { Block },
 
   async asyncData({ $axios, error, route }) {

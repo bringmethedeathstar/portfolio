@@ -1,5 +1,7 @@
 <script>
 export default {
+  transition: 'page',
+
   async asyncData({ $axios, error }) {
     try {
       const { data: work } = await $axios.$get('work');
