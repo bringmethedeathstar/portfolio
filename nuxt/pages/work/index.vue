@@ -33,7 +33,4 @@ export default {
 </template>
 
 <style scoped>
-.intro {
-  max-width: 600px;
-}
 </style>

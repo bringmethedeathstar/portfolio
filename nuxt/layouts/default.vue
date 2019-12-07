@@ -61,4 +61,8 @@ pre {
 .push {
   margin-bottom: 8rem;
 }
+
+.intro {
+  max-width: 600px;
+}
 </style>
