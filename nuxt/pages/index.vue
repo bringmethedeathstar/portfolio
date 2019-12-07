@@ -40,7 +40,7 @@ export default {
     />
 
     <div class="push text-center">
-      <n-link class="text-primary" to="/work">See my portfolio &rarr;</n-link>
+      <n-link class="btn" to="/work">See my Portfolio &rarr;</n-link>
     </div>
   </div>
 </template>

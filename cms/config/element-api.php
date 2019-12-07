@@ -72,7 +72,10 @@ return [
         'one' => true,
         'transformer' => function(Entry $entry) {
           $ratchet = new Fields([
-            'fields' => ['main' => ['transforms' => ['featured', 'work']]],
+            'fields' => [
+              'main' => ['transforms' => ['featured', 'work']],
+              'screenshot' => ['transforms' => ['screenshotCrop', 'screenshotFull']],
+            ],
             '^exclude' => ['basic', 'topics'],
             '^include' => [
               'date' => function($entry) {

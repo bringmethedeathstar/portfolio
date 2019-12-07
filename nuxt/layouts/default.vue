@@ -65,4 +65,12 @@ pre {
 .intro {
   max-width: 600px;
 }
+
+.btn {
+  @apply inline-block py-2 px-4 bg-primary text-white rounded-full border-2 border-primary;
+
+  &:hover {
+    @apply bg-white text-primary;
+  }
+}
 </style>
