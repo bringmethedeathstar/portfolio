@@ -20,7 +20,7 @@ export default {
 
 <template>
   <div class="container">
-    <Block :title="page.title" :text="page.intro" :image="page.main.featured" />
+    <Block :title="page.title" :text="page.intro" :image="page.main" />
 
     <pre>{{ page }}</pre>
   </div>

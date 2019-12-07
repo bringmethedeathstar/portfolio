@@ -31,7 +31,7 @@ return [
         'transformer' => function(Entry $entry) {
           $ratchet = new Fields([
             'fields' => [
-              'main' => ['transforms' => ['profile', 'featured']],
+              'main' => ['transforms' => ['profile', 'featured', 'work']],
               'featuredWork' => ['only' => ['main', 'intro']]
             ],
           ]);
@@ -72,7 +72,7 @@ return [
         'one' => true,
         'transformer' => function(Entry $entry) {
           $ratchet = new Fields([
-            'fields' => ['main' => ['transforms' => ['featured']]],
+            'fields' => ['main' => ['transforms' => ['featured', 'work']]],
             '^exclude' => ['basic', 'topics'],
             '^include' => [
               'date' => function($entry) {

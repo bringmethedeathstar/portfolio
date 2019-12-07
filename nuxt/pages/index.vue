@@ -24,7 +24,7 @@ export default {
       flip="true"
       title="Leah Walker"
       :text="page.simple"
-      :image="page.main.profile"
+      :image="page.main"
       :link="{ to: '/about', title: 'Hire Me' }"
     />
 
@@ -33,7 +33,7 @@ export default {
       :flip="i % 2"
       :title="work.title"
       :text="work.intro"
-      :image="work.main.featured"
+      :image="work.main"
       :link="{ to: `/work/${work.slug}`, title: 'Read Story' }"
       v-for="(work, i) in page.featuredWork"
       :key="work.id"
