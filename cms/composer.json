@@ -25,6 +25,7 @@
     "craftcms/cms": "3.3.17",
     "supercool/buttonbox": "2.0.4",
     "crystal-uk/ratchet": "^3.8",
+    "crystal-uk/captain": "^2.1.1",
     "jalendport/craft-sidebarthemes": "1.1.0"
   },
   "autoload": {
