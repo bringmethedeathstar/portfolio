@@ -9,7 +9,11 @@ export default {
 <template>
   <div class="relative overflow-hidden">
     <div class="container">
-      <header class="py-4 mb-16 border-b">
+      <header class="pt-8 pb-4 mb-16 border-b">
+        <n-link to="/">
+          <img class="brand mx-auto mb-8" src="/logo.svg" role="presentation" />
+        </n-link>
+
         <nav class="flex items-center justify-center">
           <n-link class="mx-4" to="/">Home</n-link>
           <n-link class="mx-4" to="/work">Portfolio</n-link>
@@ -72,5 +76,9 @@ pre {
   &:hover {
     @apply bg-white text-primary;
   }
+}
+
+.brand {
+  width: 300px;
 }
 </style>
