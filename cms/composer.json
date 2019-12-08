@@ -20,12 +20,13 @@
   },
   "require": {
     "vlucas/phpdotenv": "^2.4.0",
-    "lukeyouell/craft-sidebarthemes": "1.0.5",
-    "craftcms/element-api": "2.5.4",
-    "craftcms/redactor": "2.1.6",
-    "craftcms/cms": "3.0.27.1",
-    "supercool/buttonbox": "2.0.2",
-    "crystal-uk/ratchet": "^3.4"
+    "craftcms/element-api": "2.6.0",
+    "craftcms/redactor": "2.4.0",
+    "craftcms/cms": "3.3.17",
+    "supercool/buttonbox": "2.0.4",
+    "crystal-uk/ratchet": "^3.8",
+    "crystal-uk/captain": "^2.1.1",
+    "jalendport/craft-sidebarthemes": "1.1.0"
   },
   "autoload": {
     "psr-4": {
