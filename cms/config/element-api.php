@@ -5,23 +5,23 @@ use crystal\ratchet\Fields;
 
 return [
   'endpoints' => [
-    'layout' => function() {
+    'rest/generate' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
       return [
         'elementType' => Entry::class,
-        'criteria' => ['section' => 'site'],
+        'criteria' => ['id' => 26],
+        'one' => true,
         'paginate' => false,
-        'transformer' => function(Entry $entry) {
-          return [
-            'title' => $entry->title,
-            'slug' => $entry->slug,
-          ];
+        'transformer' => function() {
+          return array_map(function($entry) {
+            return '/' . ($entry->slug === 'intro' ? '' : $entry->uri);
+          }, Entry::findAll());
         },
       ];
     },
 
-    'intro' => function() {
+    'rest/intro' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
       return [
@@ -30,7 +30,10 @@ return [
         'one' => true,
         'transformer' => function(Entry $entry) {
           $ratchet = new Fields([
-            'fields' => [ 'main' => ['transforms' => 'profile'] ],
+            'fields' => [
+              'main' => ['transforms' => ['profile', 'featured', 'work']],
+              'featuredWork' => ['only' => ['main', 'intro']]
+            ],
           ]);
 
           return $ratchet->run($entry);
@@ -38,7 +41,27 @@ return [
       ];
     },
 
-    'work' => function() {
+    'rest/about' => function() {
+      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+
+      return [
+        'elementType' => Entry::class,
+        'criteria' => ['id' => 2671],
+        'one' => true,
+        'transformer' => function(Entry $entry) {
+          $ratchet = new Fields([
+            // 'fields' => [
+            //   'main' => ['transforms' => ['profile', 'featured', 'work']],
+            //   'featuredWork' => ['only' => ['main', 'intro']]
+            // ],
+          ]);
+
+          return $ratchet->run($entry);
+        },
+      ];
+    },
+
+    'rest/work' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
       return [
@@ -47,7 +70,7 @@ return [
         'paginate' => false,
         'transformer' => function(Entry $entry) {
           $ratchet = new Fields([
-            'fields' => [ 'main' => ['transforms' => 'work'] ],
+            'fields' => ['main' => ['transforms' => ['work']]],
             '^exclude' => ['basic', 'topics'],
             '^include' => [
               'date' => function($entry) {
@@ -60,7 +83,8 @@ return [
         },
       ];
     },
-    'work/<slug:{slug}>' => function($slug) {
+
+    'rest/work/<slug:{slug}>' => function($slug) {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
       return [
@@ -68,69 +92,25 @@ return [
         'criteria' => ['section' => 'work', 'slug' => $slug],
         'one' => true,
         'transformer' => function(Entry $entry) {
-          if ($asset = $entry->main->one()) {
-            $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
-          }
+          $ratchet = new Fields([
+            'fields' => [
+              'main' => ['transforms' => ['featured', 'work']],
+              'screenshot' => ['transforms' => ['screenshotCrop', 'screenshotFull']],
+            ],
+            '^exclude' => ['basic', 'topics'],
+            '^include' => [
+              'date' => function($entry) {
+                return $entry->postDate;
+              },
+            ],
+          ]);
 
-          return [
-            'title' => $entry->title,
-            'slug' => $entry->slug,
-            'date' => $entry->postDate,
-            'intro' => $entry->intro,
-            'link' => $entry->external,
-            'image' => $image ?? '',
-
-            'clients' => array_map(function($client) {
-              $icon = $client->icon->one();
-
-              return [
-                'id' => $client->id,
-                'title' => $client->title,
-                'slug' => $client->slug,
-                'iconStyle' => $client->iconStyle->value,
-                'show' => $client->show,
-                'icon' => $icon ? $icon->getUrl('clientIcon') : '',
-              ];
-            }, $entry->client->all()),
-
-            'topics' => array_map(function($topic) {
-              return [
-                'title' => $topic->title,
-                'slug' => $topic->slug,
-              ];
-            }, $entry->topics->all()),
-
-            'article' => array_map(function($article) {
-              $image = [];
-
-              if ($article->type->handle === 'intro') {
-                if ($img = $article->image->one()) {
-                  $image = [ 'title' => $img->title, 'url' => $img->getUrl($img->style->value) ];
-                }
-              } else {
-               $image = array_map(function($img) {
-                  return [
-                    'title' => $img->title,
-                    'url' => $img->getUrl($img->style->value),
-                    'layout' => $img->imgWidth->value
-                  ];
-                }, $article->image->all());
-              }
-
-              return [
-                'type' => $article->type->handle,
-                'text' => $article->text,
-                'id' => $article->id,
-                'under' => $article->under,
-                'image' => $image,
-              ];
-            }, $entry->basic->all()),
-          ];
+          return $ratchet->run($entry);
         },
       ];
     },
 
-    // 'blog' => function() {
+    // 'rest/log' => function() {
     //   \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
     //   return [
@@ -159,7 +139,7 @@ return [
     //     },
     //   ];
     // },
-    // 'blog/<slug:{slug}>' => function($slug) {
+    // 'rest/blog/<slug:{slug}>' => function($slug) {
     //   \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
     //   return [

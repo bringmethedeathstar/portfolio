@@ -1,4 +1,7 @@
 [build]
-  base    = "app"
-  publish = "app/dist"
-  command = "npm run build"
+  base    = "nuxt"
+  publish = "nuxt/dist"
+  command = "npm run generate"
+
+[context.live]
+  environment = { API_URL = 'https://api.leahwalker.me/rest/' }
