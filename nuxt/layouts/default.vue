@@ -1,8 +1,19 @@
 <script>
+import { mapState, mapMutations } from 'vuex';
 import Dash from '~/components/Dash';
 
 export default {
   components: { Dash },
+
+  computed: mapState(['ready']),
+
+  methods: mapMutations(['setReady']),
+
+  mounted() {
+    setTimeout(() => {
+      this.setReady(true);
+    }, 500);
+  },
 };
 </script>
 
@@ -10,9 +21,13 @@ export default {
   <div class="relative overflow-hidden">
     <div class="container">
       <header class="pt-8 pb-4 mb-16 border-b">
-        <n-link to="/">
-          <img class="brand mx-auto mb-8" src="/logo.svg" role="presentation" />
-        </n-link>
+        <div class="brand mx-auto mb-8">
+          <n-link to="/">
+            <transition name="down" appear>
+              <img v-show="ready" src="/logo.svg" role="presentation" />
+            </transition>
+          </n-link>
+        </div>
 
         <nav class="flex items-center justify-center">
           <n-link class="mx-4" to="/">Home</n-link>
@@ -80,5 +95,10 @@ pre {
 
 .brand {
   width: 300px;
+  height: 155px;
+}
+.brand img {
+  width: inherit;
+  height: inherit;
 }
 </style>
