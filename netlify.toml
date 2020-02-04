@@ -5,3 +5,8 @@
 
 [context.live]
   environment = { API_URL = 'https://api.leahwalker.me/rest/' }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
