@@ -28,7 +28,6 @@ export default {
           'https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap',
         rel: 'stylesheet',
       },
-
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
@@ -59,11 +58,9 @@ export default {
 
   buildModules: ['@nuxtjs/tailwindcss'],
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/dotenv'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/dotenv', '~/modules/static/'],
 
-  axios: {
-    baseURL: process.env.API_URL,
-  },
+  axios: { baseURL: process.env.API_URL },
 
   generate: {
     routes() {
