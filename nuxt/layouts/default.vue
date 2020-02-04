@@ -86,7 +86,7 @@ pre {
 }
 
 .btn {
-  @apply inline-block py-2 px-4 bg-primary text-white rounded-full border-2 border-primary;
+  @apply inline-block py-2 px-4 bg-primary text-white rounded-sm border-2 border-primary;
 
   &:hover {
     @apply bg-white text-primary;
