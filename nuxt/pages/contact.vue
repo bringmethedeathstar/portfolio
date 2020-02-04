@@ -32,7 +32,13 @@ export default {
     />
     <!-- :link="{ to: '/about', title: 'Hire Me' }" -->
 
-    <form class="push mx-auto" name="contact" method="POST" netlify>
+    <form
+      class="push mx-auto"
+      name="contact"
+      method="POST"
+      netlify
+      netlify-honeypot="bot-field"
+    >
       <label class="block font-bold text-primary leading-loose">
         Name
         <input
