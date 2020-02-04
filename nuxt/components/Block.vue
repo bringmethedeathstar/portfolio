@@ -6,6 +6,7 @@ export default {
     title: String,
     text: String,
     image: Object,
+    grayscale: Boolean,
     flip: Boolean,
     link: Object,
   },
@@ -21,8 +22,8 @@ export default {
   >
     <div class="w-full md:w-1/2 lg:w-7/12 px-8">
       <transition name="down" appear>
-        <div v-show="ready" :style="{ transitionDelay: '1s' }">
-          <picture class="w-full" :class="{ grayscale: title === 'Leah Walker' }" :alt="title">
+        <div v-show="ready" :style="{ transitionDelay: '.7s' }">
+          <picture class="w-full" :class="{ grayscale }" :alt="title">
             <source media="(max-width: 799px)" :srcset="image.work" />
             <source media="(min-width: 800px)" :srcset="image.featured" />
             <img :src="image.featured" />
@@ -33,7 +34,7 @@ export default {
 
     <div class="w-full md:w-1/2 lg:w-5/12 px-8 pt-6">
       <transition name="right" appear>
-        <div v-show="ready" :style="{ transitionDelay: '.5s' }">
+        <div v-show="ready" :style="{ transitionDelay: '.35s' }">
           <h1 class="mb-8">{{ title }}</h1>
           <div class="mb-12" v-html="text"></div>
 
