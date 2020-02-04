@@ -41,26 +41,6 @@ return [
       ];
     },
 
-    'rest/about' => function() {
-      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
-
-      return [
-        'elementType' => Entry::class,
-        'criteria' => ['id' => 2671],
-        'one' => true,
-        'transformer' => function(Entry $entry) {
-          $ratchet = new Fields([
-            // 'fields' => [
-            //   'main' => ['transforms' => ['profile', 'featured', 'work']],
-            //   'featuredWork' => ['only' => ['main', 'intro']]
-            // ],
-          ]);
-
-          return $ratchet->run($entry);
-        },
-      ];
-    },
-
     'rest/work' => function() {
       \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
@@ -110,76 +90,24 @@ return [
       ];
     },
 
-    // 'rest/log' => function() {
-    //   \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
-    //   return [
-    //     'elementType' => Entry::class,
-    //     'criteria' => ['section' => 'blog'],
-    //     'paginate' => false,
-    //     'transformer' => function(Entry $entry) {
-    //       if ($asset = $entry->main->one()) {
-    //         $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
-    //       }
+    'rest/<slug:{slug}>' => function($slug) {
+      \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
 
-    //       return [
-    //         'title' => $entry->title,
-    //         'slug' => $entry->slug,
-    //         'date' => $entry->postDate,
-    //         'intro' => $entry->intro,
-    //         'image' => $image ?? '',
+      return [
+        'elementType' => Entry::class,
+        'criteria' => ['section' => 'site', 'slug' => $slug],
+        'one' => true,
+        'transformer' => function(Entry $entry) {
+          $ratchet = new Fields([
+            'fields' => [
+              'main' => ['transforms' => ['profile', 'featured', 'work']],
+            ],
+          ]);
 
-    //         'topics' => array_map(function($topic) {
-    //           return [
-    //             'title' => $topic->title,
-    //             'slug' => $topic->slug,
-    //           ];
-    //         }, $entry->topics->all()),
-    //       ];
-    //     },
-    //   ];
-    // },
-    // 'rest/blog/<slug:{slug}>' => function($slug) {
-    //   \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
-
-    //   return [
-    //     'elementType' => Entry::class,
-    //     'criteria' => ['section' => 'blog', 'slug' => $slug],
-    //     'one' => true,
-    //     'transformer' => function(Entry $entry) {
-    //       if ($asset = $entry->main->one()) {
-    //         $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
-    //       }
-
-    //       return [
-    //         'title' => $entry->title,
-    //         'slug' => $entry->slug,
-    //         'date' => $entry->postDate,
-    //         'intro' => $entry->intro,
-
-    //         'image' => $image ?? '',
-
-    //         'topics' => array_map(function($topic) {
-    //           return [
-    //             'title' => $topic->title,
-    //             'slug' => $topic->slug,
-    //           ];
-    //         }, $entry->topics->all()),
-
-    //         'article' => array_map(function($article) {
-    //           if ($asset = $entry->main->one()) {
-    //             $image = [ 'title' => $asset->title, 'url' => $asset->getUrl('work') ];
-    //           }
-
-    //           return [
-    //             'type' => $article->type->handle,
-    //             'text' => $article->text,
-    //             'image' => $image ?? '',
-    //           ];
-    //         }, $entry->basic->all()),
-    //       ];
-    //     },
-    //   ];
-    // },
+          return $ratchet->run($entry);
+        },
+      ];
+    },
   ]
 ];

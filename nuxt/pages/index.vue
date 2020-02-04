@@ -23,7 +23,7 @@ export default {
 
 <template>
   <div class="container">
-    <Block flip="true" title="Leah Walker" :text="page.simple" :image="page.main" />
+    <Block :flip="true" title="Leah Walker" :text="page.simple" :image="page.main" grayscale />
     <!-- :link="{ to: '/about', title: 'Hire Me' }" -->
 
     <h2>My Work</h2>
