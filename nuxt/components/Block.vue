@@ -23,7 +23,12 @@ export default {
     <div class="w-full md:w-1/2 lg:w-7/12 px-8">
       <transition name="down" appear>
         <div v-show="ready" :style="{ transitionDelay: '.7s' }">
-          <picture class="w-full" :class="{ grayscale }" :alt="title">
+          <picture
+            v-if="image"
+            class="w-full"
+            :class="{ grayscale }"
+            :alt="title"
+          >
             <source media="(max-width: 799px)" :srcset="image.work" />
             <source media="(min-width: 800px)" :srcset="image.featured" />
             <img :src="image.featured" />
@@ -36,9 +41,11 @@ export default {
       <transition name="right" appear>
         <div v-show="ready" :style="{ transitionDelay: '.35s' }">
           <h1 class="mb-8">{{ title }}</h1>
-          <div class="mb-12" v-html="text"></div>
+          <div v-html="text"></div>
 
-          <n-link v-if="link" class="text-primary" :to="link.to">{{ link.title }} &rarr;</n-link>
+          <n-link v-if="link" class="mt-12 text-primary" :to="link.to"
+            >{{ link.title }} &rarr;</n-link
+          >
         </div>
       </transition>
     </div>
@@ -51,6 +58,6 @@ export default {
 }
 
 .block {
-  min-height: 500px;
+  min-height: 400px;
 }
 </style>

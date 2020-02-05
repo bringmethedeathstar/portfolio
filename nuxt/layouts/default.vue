@@ -30,9 +30,11 @@ export default {
         </div>
 
         <nav class="flex items-center justify-center">
-          <n-link class="mx-4" to="/">Home</n-link>
-          <n-link class="mx-4" to="/work">Portfolio</n-link>
-          <n-link class="mx-4 flex flex-col items-center" to="/contact">
+          <n-link class="nav-item" to="/">Home</n-link>
+          <n-link class="nav-item" to="/about">About</n-link>
+          <n-link class="nav-item" to="/services">Services</n-link>
+          <n-link class="nav-item" to="/work">Portfolio</n-link>
+          <n-link class="nav-item flex flex-col items-center" to="/contact">
             <Dash />Hire Me
             <Dash rotate="true" />
           </n-link>
@@ -42,7 +44,7 @@ export default {
 
     <nuxt />
 
-    <footer class="bg-primary py-8 text-center">
+    <footer class="mt-32 bg-primary py-8 text-center">
       <n-link class="text-white flex flex-col items-center" to="/about">
         <Dash />Hire Me
         <Dash rotate="true" />
@@ -60,12 +62,49 @@ html {
 }
 
 h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold leading-tight text-primary mb-6;
+}
+h1,
 h2 {
-  @apply text-4xl font-bold leading-tight text-primary mb-8;
+  @apply text-4xl mb-8;
+}
+h3 {
+  @apply text-3xl;
+}
+h4 {
+  @apply text-2xl;
+}
+h5 {
+  @apply text-xl;
+}
+h6 {
+  @apply text-lg;
 }
 
-.nuxt-link-exact-active,
-a:hover {
+.stack > * {
+  @apply mb-0;
+}
+.stack > * + * {
+  @apply mt-8;
+}
+
+.nav-item {
+  @apply text-black mx-4;
+}
+.nav-item:hover {
+  @apply text-primary;
+}
+
+.nav-item.nuxt-link-exact-active {
+  @apply text-primary !important;
+}
+
+a {
   @apply text-primary;
 }
 
