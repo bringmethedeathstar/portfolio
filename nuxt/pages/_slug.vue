@@ -1,5 +1,5 @@
 <script>
-import List from '~/components/blocks/list';
+import List from '~/components/blocks/List';
 import Block from '~/components/Block';
 
 export default {
