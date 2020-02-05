@@ -43,9 +43,13 @@ export default {
           <h1 class="mb-8">{{ title }}</h1>
           <div v-html="text"></div>
 
-          <n-link v-if="link" class="mt-12 text-primary" :to="link.to"
-            >{{ link.title }} &rarr;</n-link
+          <n-link
+            v-if="link"
+            class="inline-block mt-12 text-primary"
+            :to="link.to"
           >
+            {{ link.title }} &rarr;
+          </n-link>
         </div>
       </transition>
     </div>
