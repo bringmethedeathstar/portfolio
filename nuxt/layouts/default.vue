@@ -45,7 +45,7 @@ export default {
     <nuxt />
 
     <footer class="mt-32 bg-primary py-8 text-center">
-      <n-link class="text-white flex flex-col items-center" to="/about">
+      <n-link class="text-white flex flex-col items-center" to="/contact">
         <Dash />Hire Me
         <Dash rotate="true" />
       </n-link>
