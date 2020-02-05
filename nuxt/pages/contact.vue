@@ -17,7 +17,27 @@ export default {
     }
   },
 
-  data: () => ({ page: {} }),
+  data: () => ({
+    page: {},
+    form: {
+      name: 'name',
+      email: 'email@address',
+      message: 'message',
+    },
+  }),
+
+  methods: {
+    submit() {
+      this.$axios
+        .$post('contact-form', this.form)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+  },
 };
 </script>
 
@@ -30,39 +50,43 @@ export default {
       :image="page.main"
       grayscale
     />
-    <!-- :link="{ to: '/about', title: 'Hire Me' }" -->
 
-    <!-- <form class="push mx-auto" name="contact" method="POST">
-      <label class="block font-bold text-primary leading-loose">
+    <!-- <form @submit.prevent="submit" class="push mx-auto">
+      <label class="block font-bold text-primary">
         Name
         <input
-          class="block border-2 text-black border-gray-300 px-3 py-2 mb-6 w-full leading-snug"
+          class="block border-b-2 text-black border-gray-400 px-3 py-2 mb-12 w-full leading-snug"
           type="text"
           name="name"
+          v-model="form.name"
           required
         />
       </label>
 
-      <label class="block font-bold text-primary leading-loose">
+      <label class="block font-bold text-primary">
         Email
         <input
-          class="block border-2 text-black border-gray-300 px-3 py-2 mb-6 w-full leading-snug"
+          class="block border-b-2 text-black border-gray-400 px-3 py-2 mb-12 w-full leading-snug"
           type="email"
           name="email"
+          v-model="form.email"
           required
         />
       </label>
 
-      <label class="block font-bold text-primary leading-loose">
+      <label class="block font-bold text-primary">
         Message
         <textarea
-          class="block border-2 text-black border-gray-300 px-3 py-2 mb-8 w-full leading-snug"
+          class="block border-b-2 text-black border-gray-400 px-3 py-2 mb-12 w-full leading-snug"
           name="message"
+          v-model="form.message"
           required
         ></textarea>
       </label>
 
-      <button class="btn" type="submit">Send</button>
+      <div class="text-right">
+        <button class="btn" type="submit">Send</button>
+      </div>
     </form> -->
   </div>
 </template>
