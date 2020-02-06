@@ -9,7 +9,7 @@ export default {
 
   async asyncData({ $axios, error, route }) {
     try {
-      const page = await $axios.$get(route.params.slug);
+      const page = await $axios.$get(`rest/${route.params.slug}`);
 
       return { page };
     } catch (e) {
