@@ -65,7 +65,7 @@ export default {
   generate: {
     routes() {
       return axios
-        .get(`${process.env.API_URL}generate`)
+        .get(`${process.env.API_URL}rest/generate`)
         .then(({ data }) => data)
         .catch(e => console.error(e));
     },
