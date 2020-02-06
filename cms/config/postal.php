@@ -7,6 +7,8 @@ return [
 
   'to' => 'leahwalker95@hotmail.com',
 
+  'debug' => false,
+
   'replyTo' => function($letter) {
     return [$letter['email'] => $letter['name']];
   },
