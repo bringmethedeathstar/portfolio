@@ -8,7 +8,7 @@ export default {
 
   async asyncData({ $axios, error }) {
     try {
-      const page = await $axios.$get('intro');
+      const page = await $axios.$get('rest/intro');
 
       return { page };
     } catch (e) {
@@ -23,12 +23,18 @@ export default {
 
 <template>
   <div class="container">
-    <Block :flip="true" title="Leah Walker" :text="page.simple" :image="page.main" grayscale />
+    <Block
+      :flip="true"
+      title="Leah Walker"
+      :text="page.simple"
+      :image="page.main"
+      grayscale
+    />
     <!-- :link="{ to: '/about', title: 'Hire Me' }" -->
 
     <h2>My Work</h2>
     <Block
-      :flip="i % 2"
+      :flip="!!(i % 2)"
       :title="work.title"
       :text="work.intro"
       :image="work.main"
@@ -43,5 +49,4 @@ export default {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
