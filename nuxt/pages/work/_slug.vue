@@ -8,7 +8,7 @@ export default {
 
   async asyncData({ $axios, error, route }) {
     try {
-      const page = await $axios.$get(`/work/${route.params.slug}`);
+      const page = await $axios.$get(`rest/work/${route.params.slug}`);
 
       return { page };
     } catch (e) {
@@ -51,12 +51,9 @@ export default {
     </div>
 
     <div class="flex justify-center">
-      <a
-        class="btn push"
-        :href="page.external"
-        target="_blank"
-        rel="noopener"
-      >View on {{ client.title }} &rarr;</a>
+      <a class="btn push" :href="page.external" target="_blank" rel="noopener"
+        >View on {{ client.title }} &rarr;</a
+      >
     </div>
   </div>
 </template>

@@ -4,7 +4,7 @@ export default {
 
   async asyncData({ $axios, error }) {
     try {
-      const { data: work } = await $axios.$get('work');
+      const { data: work } = await $axios.$get('rest/work');
 
       return { work };
     } catch (e) {
@@ -35,5 +35,4 @@ export default {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
