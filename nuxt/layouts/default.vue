@@ -29,7 +29,7 @@ export default {
           </n-link>
         </div>
 
-        <nav class="flex items-center justify-center">
+        <nav class="flex flex-wrap items-center justify-center">
           <n-link class="nav-item" to="/">Home</n-link>
           <n-link class="nav-item" to="/about">About</n-link>
           <n-link class="nav-item" to="/services">Services</n-link>
@@ -94,7 +94,11 @@ h6 {
 }
 
 .nav-item {
-  @apply text-black mx-4;
+  @apply text-black mx-2 text-xs;
+
+  @screen sm {
+    @apply text-base mx-4;
+  }
 }
 .nav-item:hover {
   @apply text-primary;
@@ -133,7 +137,8 @@ pre {
 }
 
 .brand {
-  width: 300px;
+  @apply w-full;
+  max-width: 300px;
   height: 155px;
 }
 .brand img {
