@@ -26,7 +26,7 @@ export default {
         :key="item.id"
         class="px-6 mb-16 sm:w-1/2 md:w-1/3"
       >
-        <img class="mb-4" :src="item.main.work" alt />
+        <img v-if="item.main && item.main.work" class="mb-4" :src="item.main.work" alt />
         <p class="mb-4 font-bold text-primary">{{ item.title }}</p>
         <span>{{ item.intro }}</span>
         <!-- <pre>{{item}}</pre> -->
